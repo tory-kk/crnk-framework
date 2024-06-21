@@ -5,7 +5,6 @@ import io.crnk.core.boot.CrnkBoot;
 import io.crnk.core.engine.dispatcher.RepositoryRequestSpec;
 import io.crnk.core.engine.information.resource.ResourceInformation;
 import io.crnk.core.engine.query.QueryAdapter;
-import io.crnk.core.engine.query.QueryContext;
 import io.crnk.core.engine.registry.ResourceRegistry;
 import io.crnk.core.module.ModuleRegistry;
 import io.crnk.core.queryspec.internal.QuerySpecAdapter;
@@ -17,7 +16,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -57,15 +55,6 @@ public class RepositoryAdapterUtilsTest {
 		boot.addModule(new CoreTestModule());
 		boot.boot();
 		moduleRegistry = boot.getModuleRegistry();
-
-		when(queryAdapter.duplicate()).thenReturn(queryAdapter);
-		when(queryAdapter.getResourceInformation()).thenReturn(resourceInformation);
-		QueryContext queryContext = Mockito.mock(QueryContext.class);
-		when(queryContext.getBaseUrl()).thenReturn("http://localhost:8080");
-		when(queryAdapter.getQueryContext()).thenReturn(queryContext);
-		when(responseResourceInformation.getResourceType()).thenReturn("tasks");
-		when(requestSpec.getQueryAdapter()).thenReturn(queryAdapter);
-		when(requestSpec.getResponseResourceInformation()).thenReturn(responseResourceInformation);
 	}
 
 	@Test

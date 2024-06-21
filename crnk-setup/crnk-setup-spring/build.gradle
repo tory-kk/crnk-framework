@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'java-library'
-	id 'org.springframework.boot' version '3.1.4'
+	id 'org.springframework.boot' version '3.1.12'
 	id 'io.spring.dependency-management'
 }
 
@@ -10,12 +10,12 @@ dependencies {
 	implementation project(':crnk-setup:crnk-setup-servlet')
 	api project(':crnk-client')
 
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-web'
-	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor'
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator'
-	compileOnlyApi 'org.springframework.security:spring-security-core'
-	compileOnlyApi 'org.hibernate:hibernate-core-jakarta:5.6.15.Final'
-	compileOnlyApi 'org.springframework:spring-orm'
+	compileOnlyApi 'org.springframework.boot:spring-boot-starter-web:3.1.12'
+	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
+	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
+	compileOnlyApi 'org.springframework.security:spring-security-core:6.1.9'
+	compileOnlyApi 'org.hibernate:hibernate-core:6.4.8.Final'
+	compileOnlyApi 'org.springframework:spring-orm:6.0.21'
 
 	testImplementation  project(':crnk-data:crnk-data-jpa')
 	testImplementation  project(':crnk-home')
@@ -25,19 +25,19 @@ dependencies {
 	testImplementation  group: 'jakarta.platform', name: 'jakarta.jakartaee-api', version: '10.0.0'
 	testImplementation  'jakarta.el:jakarta.el-api:5.0.1'
 	testImplementation  'org.glassfish:jakarta.el:5.0.0-M1'
-	testImplementation  'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-xml-provider:2.15.2'
+	testImplementation  'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-xml-provider:2.15.4'
 
-	testImplementation  'org.springframework.boot:spring-boot-starter-data-jpa'
-	testImplementation  'org.springframework.boot:spring-boot-starter-web'
-	testImplementation  'org.springframework.boot:spring-boot-starter-test'
-	testImplementation  'org.springframework.boot:spring-boot-starter-actuator'
+	testImplementation  'org.springframework.boot:spring-boot-starter-data-jpa:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-web:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
 
-	testImplementation 'org.hibernate:hibernate-core-jakarta:5.6.15.Final'
+	testImplementation 'org.hibernate:hibernate-core:6.4.8.Final'
 	testImplementation  'com.h2database:h2'
 
-	testImplementation  'org.springframework.boot:spring-boot-configuration-processor'
-	testImplementation  'org.springframework:spring-orm'
-	testImplementation  'org.springframework.security:spring-security-core'
+	testImplementation  'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
+	testImplementation  'org.springframework:spring-orm:6.0.21'
+	testImplementation  'org.springframework.security:spring-security-core:6.1.9'
 
 	bootJar {
 		enabled = false
@@ -45,6 +45,7 @@ dependencies {
 
 	jar {
 		enabled = true
+		archiveClassifier = ''
 	}
 }
 

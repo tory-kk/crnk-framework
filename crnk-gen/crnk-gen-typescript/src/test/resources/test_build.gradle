@@ -41,15 +41,15 @@ dependencies {
 	implementation 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
 
 	implementation 'org.slf4j:slf4j-api:2.0.9'
-	implementation 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations'
+	implementation 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.15.4'
 
 	integrationTestCompile 'junit:junit:4.12'
 	integrationTestCompile 'commons-io:commons-io:2.14.0'
-	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:1.9.6'
-	integrationTestCompile 'org.apache.deltaspike.core:deltaspike-core-impl:1.9.6'
-	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:1.9.6'
-	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-impl:1.9.6'
-	integrationTestCompile 'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-weld:1.9.6'
+	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
+	integrationTestCompile 'org.apache.deltaspike.core:deltaspike-core-impl:2.0.0'
+	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
+	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-impl:2.0.0'
+	integrationTestCompile 'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-weld:2.0.0'
 	integrationTestCompile 'org.jboss.weld.se:weld-se-core:2.4.0.Final'
 }
 

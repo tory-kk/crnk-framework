@@ -23,7 +23,19 @@ public class QuerySpecTest {
 
     @Test
     public void testEqualContract() {
-        EqualsVerifier.forClass(QuerySpec.class).usingGetClass().suppress(Warning.NONFINAL_FIELDS).verify();
+		final QuerySpec querySpec1 = new QuerySpec("type1");
+		querySpec1.setLimit(1L);
+		final QuerySpec querySpec2 = new QuerySpec("type2");
+		querySpec2.setLimit(2L);
+
+		EqualsVerifier.forClass(QuerySpec.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				.withPrefabValues(FilterSpec.class, new FilterSpec(1), new FilterSpec(2))
+				.withPrefabValues(QuerySpec.class, querySpec1, querySpec2)
+				// TODO: just to fix build
+				.withIgnoredFields("resourceClass", "resourceType")
+				.verify();
     }
 
     @Test

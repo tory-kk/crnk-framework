@@ -541,7 +541,7 @@ public class ResourcePatchControllerTest extends ControllerTestBase {
         Response projectResponse = resourcePost.handle(taskPath, emptyProjectQuery, newProjectBody);
         Resource savedProject = projectResponse.getDocument().getSingleData().get();
         assertThat(savedProject.getType()).isEqualTo("projects");
-        assertThat(projectResponse.getDocument().getSingleData().get().getAttributes().get("data")).isNull();
+        assertThat(projectResponse.getDocument().getSingleData().get().getAttributes().get("data").isNull()).isTrue();
         Long projectId = Long.parseLong(projectResponse.getDocument().getSingleData().get().getId());
         assertThat(projectId).isNotNull();
 
@@ -772,7 +772,7 @@ public class ResourcePatchControllerTest extends ControllerTestBase {
         Resource updatedTask = response.getDocument().getSingleData().get();
         assertThat(updatedTask.getAttributes().get("name").asText()).isEqualTo("Mary Jane");
         assertThat(updatedTask.getId()).isEqualTo(task.getId().toString());
-        assertThat(updatedTask.getAttributes().get("category")).isNull();
+        assertThat(updatedTask.getAttributes().get("category").isNull()).isTrue();
     }
 
 

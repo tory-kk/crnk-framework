@@ -1,13 +1,9 @@
 package io.crnk.data.jpa.internal.facet;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.*;
 
 import io.crnk.core.engine.parser.TypeParser;
 import io.crnk.core.engine.registry.RegistryEntry;
@@ -28,6 +24,7 @@ import io.crnk.data.jpa.internal.query.QueryBuilder;
 import io.crnk.data.jpa.internal.query.backend.criteria.JpaCriteriaQueryBackend;
 import io.crnk.data.jpa.internal.query.backend.criteria.JpaCriteriaQueryImpl;
 import io.crnk.data.jpa.query.JpaQueryFactory;
+import org.hibernate.query.sqm.tree.select.SqmSelectStatement;
 
 public class JpaFacetProvider extends FacetProviderBase implements Prioritizable {
 
@@ -74,17 +71,30 @@ public class JpaFacetProvider extends FacetProviderBase implements Prioritizable
 			QueryBuilder executorFactory = new QueryBuilder(query, backend);
 			executorFactory.applyFilterSpec();
 
+			CriteriaBuilder criteriaBuilder = backend.getCriteriaBuilder();
+			// Hibernate 6.5+ has stricter type checks of the resulted type which can be set only during query creation
+			SqmSelectStatement<Object[]> facetQuery = ((SqmSelectStatement) criteriaBuilder.createQuery(Object[].class));
+
+			// It is required to set roots from the original query to preserve joins for conditions
+			facetQuery.getQuerySpec().setFromClause(
+					((SqmSelectStatement) criteriaQuery).getQuerySpec().getFromClause()
+			);
+
+			Predicate restrictions = criteriaQuery.getRestriction();
+			if (restrictions != null) {
+				facetQuery.where(restrictions);
+			}
+
 			// perform grouping
 			Expression expression = (Expression) executorFactory.getExpression(path);
-			criteriaQuery.groupBy(expression);
+			facetQuery.groupBy(expression);
 
 			// perform selection
-			CriteriaBuilder criteriaBuilder = backend.getCriteriaBuilder();
-			Expression<Long> countExpr = criteriaBuilder.count(expression);
-			criteriaQuery.multiselect(expression, countExpr);
+			final Set<Root> roots = criteriaQuery.getRoots();
+			Expression<Long> countExpr = criteriaBuilder.count(roots.iterator().next());
+			facetQuery.multiselect(expression, countExpr);
 
-
-			TypedQuery typedQuery = queryFactory.getEntityManager().createQuery(criteriaQuery);
+			TypedQuery<Object[]> typedQuery = queryFactory.getEntityManager().createQuery(facetQuery);
 			List<Object[]> resultList = typedQuery.getResultList();
 			for (Object[] result : resultList) {
 				Object value = result[0];

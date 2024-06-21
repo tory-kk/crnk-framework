@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 
@@ -165,7 +166,7 @@ public class BasicAttributesIntTest extends AbstractJpaJerseyTest {
 		ResourceRepository<BasicAttributesTestEntity, Serializable> repo =
 				client.getRepositoryForType(BasicAttributesTestEntity.class);
 
-		OffsetDateTime now = OffsetDateTime.now();
+		OffsetDateTime now = OffsetDateTime.now().truncatedTo(ChronoUnit.MICROS);
 
 		BasicAttributesTestEntity test1 = new BasicAttributesTestEntity();
 		test1.setId(1L);

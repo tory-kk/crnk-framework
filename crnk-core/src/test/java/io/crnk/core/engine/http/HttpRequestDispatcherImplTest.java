@@ -4,16 +4,11 @@ import io.crnk.core.CoreTestContainer;
 import io.crnk.core.CoreTestModule;
 import io.crnk.core.engine.dispatcher.RequestDispatcher;
 import io.crnk.core.engine.dispatcher.Response;
-import io.crnk.core.engine.document.Document;
 import io.crnk.core.engine.filter.AbstractDocumentFilter;
 import io.crnk.core.engine.filter.DocumentFilter;
 import io.crnk.core.engine.filter.DocumentFilterChain;
 import io.crnk.core.engine.filter.DocumentFilterContext;
-import io.crnk.core.engine.information.repository.RepositoryAction;
-import io.crnk.core.engine.information.repository.RepositoryInformation;
-import io.crnk.core.engine.information.repository.RepositoryInformationProvider;
-import io.crnk.core.engine.information.repository.RepositoryInformationProviderContext;
-import io.crnk.core.engine.information.repository.RepositoryMethodAccess;
+import io.crnk.core.engine.information.repository.*;
 import io.crnk.core.engine.information.resource.ResourceAction;
 import io.crnk.core.engine.information.resource.ResourceInformation;
 import io.crnk.core.engine.internal.dispatcher.ControllerRegistry;
@@ -26,18 +21,13 @@ import io.crnk.core.engine.internal.http.HttpRequestContextBaseAdapter;
 import io.crnk.core.engine.internal.http.HttpRequestDispatcherImpl;
 import io.crnk.core.engine.internal.http.JsonApiRequestProcessor;
 import io.crnk.core.engine.internal.information.repository.ResourceRepositoryInformationImpl;
-import io.crnk.core.engine.query.QueryAdapter;
 import io.crnk.core.engine.result.ImmediateResult;
 import io.crnk.core.exception.BadRequestException;
 import io.crnk.core.module.Module;
 import io.crnk.core.repository.ResourceRepository;
 import io.crnk.core.resource.annotations.JsonApiId;
 import io.crnk.core.resource.annotations.JsonApiResource;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -48,13 +38,8 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 public class HttpRequestDispatcherImplTest {
 
@@ -159,7 +144,8 @@ public class HttpRequestDispatcherImplTest {
         when(controller.isAcceptable(any(JsonPath.class), eq("GET"))).thenCallRealMethod();
 
         Response expectedResponse = new Response(null, 200);
-        when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), any(Document.class))).thenReturn(new ImmediateResult<>(expectedResponse));
+		when(controller.handle(any(), any(), any())).thenCallRealMethod();
+        when(controller.handleAsync(any(), any(), any())).thenReturn(new ImmediateResult<>(expectedResponse));
 
         ControllerRegistry controllerRegistry = container.getBoot().getControllerRegistry();
         controllerRegistry.getControllers().clear();
@@ -168,8 +154,7 @@ public class HttpRequestDispatcherImplTest {
         RequestDispatcher sut = new HttpRequestDispatcherImpl(container.getModuleRegistry(), null);
         sut.process(requestContext);
 
-        verify(controller, times(1))
-                .handleAsync(any(JsonPath.class), any(QueryAdapter.class), any(Document.class));
+        verify(controller, times(1)).handleAsync(any(), any(), any());
     }
 
     @Test
@@ -187,15 +172,14 @@ public class HttpRequestDispatcherImplTest {
 
         // WHEN
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
-        when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class),
-                any(Document.class))).thenReturn(new ImmediateResult<>(null));
+		when(controller.handle(any(), any(), any())).thenCallRealMethod();
+        when(controller.handleAsync(any(), any(), any())).thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
         sut.dispatchRequest(path, requestType, parameters, null);
 
         // THEN
-        verify(controller, times(1))
-                .handleAsync(any(JsonPath.class), any(QueryAdapter.class), any(Document.class));
+        verify(controller, times(1)).handleAsync(any(), any(), any());
     }
 
     @Test
@@ -213,15 +197,14 @@ public class HttpRequestDispatcherImplTest {
 
         // WHEN
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
-        when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class),
-                any(Document.class))).thenReturn(new ImmediateResult<>(null));
+		when(controller.handle(any(), any(), any())).thenCallRealMethod();
+        when(controller.handleAsync(any(), any(), any())).thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
         sut.dispatchRequest(path, requestType, parameters, null);
 
         // THEN
-        verify(controller, times(1))
-                .handleAsync(any(JsonPath.class), any(QueryAdapter.class), any(Document.class));
+        verify(controller, times(1)).handleAsync(any(), any(), any());
     }
 
     @Ignore // FIXME reasonable action contributions

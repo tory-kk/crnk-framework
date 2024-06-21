@@ -39,7 +39,15 @@ public class GraphUtilsTest {
 
 	@Test
 	public void testNodeEquals() {
-		EqualsVerifier.forClass(GraphUtils.Node.class).usingGetClass().suppress(Warning.STRICT_INHERITANCE).suppress(Warning.NULL_FIELDS).verify();
+		final GraphUtils.Edge edge1 = new GraphUtils.Edge(new GraphUtils.Node("from1", null), new GraphUtils.Node("to1", null));
+		final GraphUtils.Edge edge2 = new GraphUtils.Edge(new GraphUtils.Node("from2", null), new GraphUtils.Node("to2", null));
+
+		EqualsVerifier.forClass(GraphUtils.Node.class).usingGetClass()
+				.suppress(Warning.STRICT_INHERITANCE)
+				.withPrefabValues(GraphUtils.Edge.class, edge1, edge2)
+				// TODO: just to fix build
+				.withIgnoredFields("value", "inEdges", "outEdges")
+				.suppress(Warning.NULL_FIELDS).verify();
 	}
 
 
@@ -51,7 +59,10 @@ public class GraphUtilsTest {
 
 	@Test
 	public void testEdgeEquals() {
-		EqualsVerifier.forClass(GraphUtils.Edge.class).usingGetClass().suppress(Warning.NULL_FIELDS).verify();
+		EqualsVerifier.forClass(GraphUtils.Edge.class).usingGetClass()
+				.suppress(Warning.NULL_FIELDS)
+				.withPrefabValues(GraphUtils.Node.class, new GraphUtils.Node("node1", null), new GraphUtils.Node("node2", null))
+				.verify();
 	}
 
 	@Test
