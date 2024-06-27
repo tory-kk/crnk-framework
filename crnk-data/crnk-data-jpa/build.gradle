@@ -6,10 +6,10 @@ plugins {
 dependencies {
 	implementation project(':crnk-core')
 	implementation project(':crnk-meta')
-	compileOnlyApi project(':crnk-client')
-	compileOnlyApi project(':crnk-data:crnk-data-facet')
-	compileOnlyApi group: 'jakarta.platform', name: 'jakarta.jakartaee-api', version: '10.0.0'
-	compileOnlyApi group: 'com.querydsl', name: 'querydsl-jpa', classifier: 'jakarta', version: '5.0.0'
+	compileOnly project(':crnk-client')
+	compileOnly project(':crnk-data:crnk-data-facet')
+	compileOnly group: 'jakarta.platform', name: 'jakarta.jakartaee-api', version: '10.0.0'
+	compileOnly group: 'com.querydsl', name: 'querydsl-jpa', classifier: 'jakarta', version: '5.0.0'
 
 	implementation  'com.google.guava:guava:31.1-jre'
 
