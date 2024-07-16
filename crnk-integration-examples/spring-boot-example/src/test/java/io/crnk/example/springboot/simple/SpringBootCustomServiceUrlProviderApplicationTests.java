@@ -1,8 +1,8 @@
 package io.crnk.example.springboot.simple;
 
-import com.jayway.restassured.RestAssured;
 import io.crnk.core.boot.CrnkBoot;
 import io.crnk.example.springboot.SpringBootExampleApplication;
+import io.restassured.RestAssured;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.http.HttpStatus.OK;
 
 /**
  * Makes sure links are generated based on {@link io.crnk.core.engine.url.ServiceUrlProvider} implementation

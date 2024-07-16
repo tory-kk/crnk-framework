@@ -3,8 +3,8 @@ package io.crnk.setup.vertx;
 import io.crnk.core.boot.CrnkBoot;
 import io.crnk.home.HomeModule;
 import io.crnk.test.mock.reactive.ReactiveTestModule;
-import io.vertx.reactivex.core.AbstractVerticle;
-import io.vertx.reactivex.core.http.HttpServer;
+import io.vertx.rxjava3.core.AbstractVerticle;
+import io.vertx.rxjava3.core.http.HttpServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
