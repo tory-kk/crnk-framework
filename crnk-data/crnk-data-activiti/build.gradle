@@ -8,7 +8,6 @@ targetCompatibility = 1.17
 
 dependencies {
 	implementation project(':crnk-core')
-	compileOnly group: 'jakarta.platform', name: 'jakarta.jakartaee-api', version: '10.0.0'
 
 	testImplementation  'com.h2database:h2:2.2.224'
 

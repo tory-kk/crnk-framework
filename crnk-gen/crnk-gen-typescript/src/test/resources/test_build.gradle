@@ -38,7 +38,6 @@ dependencies {
 	implementation files(('../../crnk-core/build/classes/main'))
 	implementation files(('../../crnk-meta/build/classes/main'))
 	implementation files(('../../crnk-cdi/build/classes/main'))
-	implementation 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
 
 	implementation 'org.slf4j:slf4j-api:2.0.9'
 	implementation 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.15.4'
@@ -50,7 +49,7 @@ dependencies {
 	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
 	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-impl:2.0.0'
 	integrationTestCompile 'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-weld:2.0.0'
-	integrationTestCompile 'org.jboss.weld.se:weld-se-core:2.4.0.Final'
+	integrationTestCompile 'org.jboss.weld.se:weld-se-core:5.1.2.Final'
 }
 
 apply plugin: io.crnk.gen.typescript.TSGeneratorPlugin

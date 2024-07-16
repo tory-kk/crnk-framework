@@ -13,9 +13,8 @@ dependencies {
 	compileOnly 'junit:junit:4.13.1'
     compileOnly 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
     compileOnly 'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-api:2.0.0'
-    compileOnly 'org.jboss.weld.se:weld-se-core:2.4.0.Final'
+    compileOnly 'org.jboss.weld.se:weld-se-core:5.1.2.Final'
     compileOnly 'org.springframework.boot:spring-boot:3.1.12'
-    compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
 
     testImplementation  project(':crnk-meta')
     testImplementation  project(':crnk-test')
@@ -27,7 +26,6 @@ dependencies {
     testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
     testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-impl:2.0.0'
     testImplementation  'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-weld:2.0.0'
-    testImplementation  'org.jboss.weld.se:weld-se-core:2.4.0.Final'
-    testImplementation  'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    testImplementation  'org.jboss.weld.se:weld-se-core:5.1.2.Final'
     testImplementation  'org.springframework.boot:spring-boot:3.1.12'
 }
