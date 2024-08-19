@@ -9,7 +9,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Tuple;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
-import org.hibernate.query.sqm.tree.SqmCopyContext;
 import org.hibernate.query.sqm.tree.select.SqmSelectStatement;
 
 import java.util.ArrayList;
@@ -54,7 +53,6 @@ public class JpaCriteriaQueryExecutorImpl<T> extends AbstractQueryExecutorImpl<T
     }
 
     @Override
-    @SuppressWarnings({"rawtypes"})
     public long getTotalRowCount() {
 		final Set<Root<?>> roots = query.getRoots();
 		if (roots.size() != 1) {
@@ -64,22 +62,10 @@ public class JpaCriteriaQueryExecutorImpl<T> extends AbstractQueryExecutorImpl<T
 			throw new IllegalStateException("cannot compute totalRowCount for grouped queries");
 		}
 
-		// transform query to a count query
-		final Root root = roots.iterator().next();
-		final CriteriaBuilder builder = em.getCriteriaBuilder();
-
-		final SqmSelectStatement copy = ((SqmSelectStatement) query).copy(SqmCopyContext.noParamCopyContext());
-		// TODO: to fix
-		// Reset distinct flag, otherwise Hibernate fails to derive type:
-		// Cannot invoke "org.hibernate.query.sqm.SqmPathSource.getSqmPathType()" because the return value of "org.hibernate.metamodel.model.domain.EntityDomainType.getIdentifierDescriptor()" is null
-		copy.distinct(false);
-
-		final SqmSelectStatement<Long> countQuery = copy.createCountQuery();
-		// By default, count query has `select *` which may lead to data duplications during joins with other tables
-		countQuery.select(isDistinct() ? builder.countDistinct(root) : builder.count(root));
+		final SqmSelectStatement<Long> countQuery = ((SqmSelectStatement<T>) query).createCountQuery();
+		countQuery.distinct(isDistinct());
 
 		final TypedQuery<Long> countTypedQuery = em.createQuery(countQuery);
-
 		return countTypedQuery.getSingleResult();
 	}
 

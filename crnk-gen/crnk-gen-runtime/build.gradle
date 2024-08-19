@@ -29,3 +29,6 @@ dependencies {
     testImplementation  'org.jboss.weld.se:weld-se-core:5.1.2.Final'
     testImplementation  'org.springframework.boot:spring-boot:3.1.12'
 }
+
+// Gradle complains
+compileTestJava.dependsOn ':crnk-setup:crnk-setup-cdi:processResources'

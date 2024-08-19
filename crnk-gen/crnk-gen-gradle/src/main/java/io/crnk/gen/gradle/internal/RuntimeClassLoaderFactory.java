@@ -51,7 +51,8 @@ public class RuntimeClassLoaderFactory {
 	public URLClassLoader createClassLoader(ClassLoader parentClassLoader, boolean isolate) {
 		Set<URL> classURLs = new HashSet<>(); // NOSONAR URL needed by URLClassLoader
 		classURLs.addAll(getProjectLibraryUrls());
-		classURLs.addAll(getPluginUrls());
+		// TODO: URLClassLoader is no longer available, so another way must be found
+//		classURLs.addAll(getPluginUrls());
 
 		// some classes still need to be shared between plugin and generation
 		ClassLoader sharedClassLoader;
@@ -129,6 +130,11 @@ public class RuntimeClassLoaderFactory {
 	public List<URL> getPluginUrls() {
 		List<URL> urls = new ArrayList<>();
 
+		// TODO: exclude from build
+
+		// TODO: load via list of dependencies?
+		// TODO: see if it is being used anywhere, perhaps delete?
+
 		// add this plugin itself to the runtime classpath to make integration available
 		URLClassLoader classLoader = (URLClassLoader) getClass().getClassLoader();
 		for (URL gradleClassUrl : classLoader.getURLs()) {
@@ -187,7 +193,7 @@ public class RuntimeClassLoaderFactory {
 		String configurationName = generatorConfiguration.getRuntime().getConfiguration();
 
 		ConfigurationContainer configurations = project.getConfigurations();
-		Configuration runtimeConfiguration = configurations.findByName(configurationName + "Runtime");
+		Configuration runtimeConfiguration = configurations.findByName(configurationName + "RuntimeClasspath");
 		if (runtimeConfiguration == null) {
 			runtimeConfiguration = configurations.getByName(configurationName);
 		}

@@ -57,25 +57,27 @@ public class TSGeneratorTest {
         Assert.assertTrue(config.getExcludes().contains("resources.meta"));
     }
 
-    @Test(expected = UnsupportedOperationException.class)
-    public void throwExceptionWhenMetaElementNotMappedToNpmPackage() {
+    @Test
+    public void getNpmPackageReturnsNotSpecifiedPackageWhenMetaElementNotMappedToNpmPackage() {
         TSMetaTransformationContext transformationContext = generator.createMetaTransformationContext();
-        MetaElement metaElement = Mockito.mock(MetaElement.class);
+		MetaElement metaElement = new MetaElement();
         metaElement.setId("does.not.exist");
-        transformationContext.getNpmPackage(metaElement);
+
+		Assert.assertEquals("@packageNameNotSpecified", transformationContext.getNpmPackage(metaElement));
     }
 
-    @Test(expected = UnsupportedOperationException.class)
-    public void throwExceptionWhenMetaElementNotMappedToDirectory() {
+    @Test
+    public void getDirectoryReturnsRootDirectoryWhenMetaElementNotMappedToDirectory() {
         TSMetaTransformationContext transformationContext = generator.createMetaTransformationContext();
-        MetaElement metaElement = Mockito.mock(MetaElement.class);
+        MetaElement metaElement = new MetaElement();
         metaElement.setId("does.not.exist");
-        transformationContext.getDirectory(metaElement);
+
+		Assert.assertEquals("", transformationContext.getDirectory(metaElement));
     }
 
     @Test(expected = IllegalStateException.class)
     public void throwExceptionWhenTransformingUnknownMetaElement() {
-        MetaElement metaElement = Mockito.mock(MetaElement.class);
+		MetaElement metaElement = new MetaElement();
         metaElement.setId("does.not.exist");
 
         TSMetaTransformationOptions options = Mockito.mock(TSMetaTransformationOptions.class);

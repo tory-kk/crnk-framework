@@ -39,7 +39,7 @@ dependencies {
     implementation project(':crnk-format:crnk-format-plain-json')
 
 	implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
-	implementation 'org.hibernate:hibernate-core:6.4.8.Final'
+	implementation 'org.hibernate:hibernate-core:6.6.0.Final'
     implementation  'com.h2database:h2:2.2.224'
 
     implementation 'io.vertx:vertx-auth-common:4.4.5'

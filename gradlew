@@ -115,9 +115,8 @@ esac
 CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
 
 
-
-JDK_DOWNLOAD_URL="https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk17.0.8+9/OpenJDK8U-jdk_x64_JDK_OS_hotspot_17.0.8+9.JDK_DIST_SUFFIX"
-JDK_VERSION="17.0.8+9"
+JDK_DOWNLOAD_URL="https://github.com/AdoptOpenJDK/openjdk17-binaries/releases/download/jdk-2021-05-07-13-31/OpenJDK-jdk_x64_JDK_OS_hotspot_2021-05-06-23-30.JDK_DIST_SUFFIX"
+JDK_VERSION="17+20"
 
 JDK_CACHE_DIR="${APP_HOME}/.gradle/jdk"
 
@@ -134,17 +133,18 @@ if ! [ -d "${JAVA_HOME}" ]; then
   if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
     JDK_ENV="windows-x64"
     JDK_OS="windows"
-    JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_DIST_SUFFIX/zip}"
+    JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed 's/JDK_DIST_SUFFIX/zip/g')
     JDK_DOWNLOAD_FILE="${JDK_CACHE_DIR}/jdk-${JDK_VERSION}.zip"
   else
     [ "$darwin" = true ] && JDK_ENV="osx-x64" || JDK_ENV="linux-x64"
     [ "$darwin" = true ] && JDK_OS="mac" || JDK_OS="linux"
-    JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_DIST_SUFFIX/tar.gz}"
+
+	JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed 's/JDK_DIST_SUFFIX/tar.gz/g')
     JDK_DOWNLOAD_FILE="${JDK_CACHE_DIR}/jdk-${JDK_VERSION}.tar.gz"
   fi
 
-  JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_ENV/${JDK_ENV}}"
-  JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_OS/${JDK_OS}}"
+  JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed "s/JDK_ENV/${JDK_ENV}/g")
+  JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed "s/JDK_OS/${JDK_OS}/g")
 
   echo "Downloading JDK from $JDK_DOWNLOAD_URL"
 

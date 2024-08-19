@@ -19,7 +19,11 @@ dependencies {
 	testImplementation  'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.4'
 	testImplementation  'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
 
+	// Use latest 'mybatis' artifact, as the one which comes from 'activiti-engine' by default does not work well with modular Java
+	// and produce errors, complaining about access to `ArrayList.size()`.
+	compileOnly 'org.mybatis:mybatis:3.5.16'
 	compileOnly 'org.activiti:activiti-engine:6.0.0'
+	testImplementation  'org.mybatis:mybatis:3.5.16'
 	testImplementation  'org.activiti:activiti-engine:6.0.0'
 	testImplementation  'org.springframework:spring-context:6.0.21'
 	testImplementation  'com.google.guava:guava:31.1-jre'

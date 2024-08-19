@@ -21,12 +21,13 @@ public class DocumentTest {
 
 	@Test
 	public void testDocumentEqualsContract() {
-		EqualsVerifier.forClass(Document.class).usingGetClass()
+		EqualsVerifier.forClass(Document.class)
+				.usingGetClass()
 				// https://github.com/jqno/equalsverifier/issues/486
 				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
-				// TODO: just to fix build
-				.withIgnoredFields("jsonapi")
-				.suppress(Warning.NONFINAL_FIELDS).verify();
+				.withIgnoredFields("jsonapi") // ignore unused fields in equals and hashcode
+				.suppress(Warning.NONFINAL_FIELDS)
+				.verify();
 	}
 
 	@Test

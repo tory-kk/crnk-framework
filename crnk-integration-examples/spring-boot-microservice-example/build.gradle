@@ -11,7 +11,10 @@ mainClassName = "io.crnk.example.springboot.microservice.MicroServiceApplication
 dependencies {
 
 	implementation project(':crnk-setup:crnk-setup-spring-boot3')
-	implementation project(':crnk-home')
+	implementation (project(':crnk-home')) {
+		// Conflicts with Logback
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
 	implementation project(':crnk-testkit')
 	implementation project(':crnk-client')
 	implementation 'com.squareup.okhttp3:okhttp:3.4.1'
