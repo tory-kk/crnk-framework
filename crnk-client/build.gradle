@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    api project(':crnk-core')
+	api project(':crnk-core')
 
 	api 'org.apache.httpcomponents:httpclient:4.5.13'
 	api 'org.glassfish.jersey.ext:jersey-proxy-client:3.0.14'
@@ -15,7 +15,7 @@ dependencies {
 	api 'com.squareup.okhttp3:okhttp:3.4.1'
 	api 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.15.4'
 
-    testImplementation  project(':crnk-setup:crnk-setup-rs')
-    testImplementation  project(':crnk-test')
+	testImplementation  project(':crnk-setup:crnk-setup-rs')
+	testImplementation  project(':crnk-test')
 
 }

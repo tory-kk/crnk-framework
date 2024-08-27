@@ -8,12 +8,12 @@ plugins {
 }
 
 dependencies {
-    implementation project(':crnk-core')
-    implementation project(':crnk-data:crnk-data-facet')
-    implementation project(':crnk-meta')
-    compileOnly project(':crnk-home')
-    testImplementation  project(':crnk-test')
-    testImplementation  project(':crnk-home')
+	implementation project(':crnk-core')
+	implementation project(':crnk-data:crnk-data-facet')
+	implementation project(':crnk-meta')
+	compileOnly project(':crnk-home')
+	testImplementation  project(':crnk-test')
+	testImplementation  project(':crnk-home')
 }
 
 /*

@@ -4,11 +4,11 @@ plugins {
 }
 
 dependencies {
-    implementation project(':crnk-meta')
-    implementation 'com.squareup:javapoet:1.11.1'
-    testImplementation  project(':crnk-meta')
-    testImplementation  project(':crnk-test')
-    testImplementation  'com.google.testing.compile:compile-testing:0.15'
-    testImplementation  'org.hibernate:hibernate-core:6.6.0.Final'
+	implementation project(':crnk-meta')
+	implementation 'com.squareup:javapoet:1.11.1'
+	testImplementation  project(':crnk-meta')
+	testImplementation  project(':crnk-test')
+	testImplementation  'com.google.testing.compile:compile-testing:0.15'
+	testImplementation  'org.hibernate:hibernate-core:6.6.0.Final'
 
 }
