@@ -51,8 +51,11 @@ public class RuntimeClassLoaderFactory {
 	public URLClassLoader createClassLoader(ClassLoader parentClassLoader, boolean isolate) {
 		Set<URL> classURLs = new HashSet<>(); // NOSONAR URL needed by URLClassLoader
 		classURLs.addAll(getProjectLibraryUrls());
-		// TODO: URLClassLoader is no longer available, so another way must be found
-//		classURLs.addAll(getPluginUrls());
+		// TODO: The `getPluginUrls` does not work properly, it immediately fails if executed on Java 17.
+		// The culprit is `(URLClassLoader) getClass().getClassLoader()` this piece of code:
+		// `getClass().getClassLoader()` is no longer an instance of `URLClassLoader` and therefore the cast cannot be done.
+		// So, commenting the code out to let the build pass.
+		// classURLs.addAll(getPluginUrls());
 
 		// some classes still need to be shared between plugin and generation
 		ClassLoader sharedClassLoader;
@@ -129,11 +132,6 @@ public class RuntimeClassLoaderFactory {
 
 	public List<URL> getPluginUrls() {
 		List<URL> urls = new ArrayList<>();
-
-		// TODO: exclude from build
-
-		// TODO: load via list of dependencies?
-		// TODO: see if it is being used anywhere, perhaps delete?
 
 		// add this plugin itself to the runtime classpath to make integration available
 		URLClassLoader classLoader = (URLClassLoader) getClass().getClassLoader();
