@@ -28,7 +28,7 @@ Note that due to reliability issues of MavenCentral we only rarely publish there
 
 ## Requirements
 
-Crnk requires Java 17, Hibernate 6.6.0 or later and an SLF4J setup for logging.
+Crnk requires Java 17, Spring Boot 3, Hibernate 6.6.0 or later and an SLF4J setup for logging.
 
 ## Example
 
