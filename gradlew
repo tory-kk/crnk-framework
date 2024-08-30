@@ -133,18 +133,17 @@ if ! [ -d "${JAVA_HOME}" ]; then
   if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
     JDK_ENV="windows-x64"
     JDK_OS="windows"
-    JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed 's/JDK_DIST_SUFFIX/zip/g')
+    JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_DIST_SUFFIX/zip}"
     JDK_DOWNLOAD_FILE="${JDK_CACHE_DIR}/jdk-${JDK_VERSION}.zip"
   else
     [ "$darwin" = true ] && JDK_ENV="osx-x64" || JDK_ENV="linux-x64"
     [ "$darwin" = true ] && JDK_OS="mac" || JDK_OS="linux"
-
-	JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed 's/JDK_DIST_SUFFIX/tar.gz/g')
+    JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_DIST_SUFFIX/tar.gz}"
     JDK_DOWNLOAD_FILE="${JDK_CACHE_DIR}/jdk-${JDK_VERSION}.tar.gz"
   fi
 
-  JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed "s/JDK_ENV/${JDK_ENV}/g")
-  JDK_DOWNLOAD_URL=$(echo $JDK_DOWNLOAD_URL | sed "s/JDK_OS/${JDK_OS}/g")
+  JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_ENV/${JDK_ENV}}"
+  JDK_DOWNLOAD_URL="${JDK_DOWNLOAD_URL/JDK_OS/${JDK_OS}}"
 
   echo "Downloading JDK from $JDK_DOWNLOAD_URL"
 
