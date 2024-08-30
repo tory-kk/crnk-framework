@@ -2,7 +2,7 @@ apply plugin: 'war'
 apply plugin: 'liberty'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 // configure liberty-gradle-plugin

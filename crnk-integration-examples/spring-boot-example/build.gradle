@@ -10,42 +10,42 @@ mainClassName = "io.crnk.example.springboot.SpringBootExampleApplication"
 
 dependencies {
 
-	implementation project(':crnk-setup:crnk-setup-spring-boot3')
-	implementation project(':crnk-data:crnk-data-jpa')
-	implementation project(':crnk-validation')
-	implementation (project(':crnk-home')) {
+    implementation project(':crnk-setup:crnk-setup-spring-boot3')
+    implementation project(':crnk-data:crnk-data-jpa')
+    implementation project(':crnk-validation')
+    implementation (project(':crnk-home')) {
 		// Conflicts with Logback
 		exclude group: 'org.slf4j', module: 'slf4j-simple'
 	}
-	implementation project(':crnk-ui')
-	implementation project(':crnk-operations')
-	implementation project(':crnk-security')
-	implementation project(':crnk-data:crnk-data-facet')
+    implementation project(':crnk-ui')
+    implementation project(':crnk-operations')
+    implementation project(':crnk-security')
+    implementation project(':crnk-data:crnk-data-facet')
 
-	// necessary for intellij having a broken annotation processing support
-	compileOnly project(':crnk-gen:crnk-gen-java')
-	annotationProcessor project(':crnk-gen:crnk-gen-java')
+    // necessary for intellij having a broken annotation processing support
+    compileOnly project(':crnk-gen:crnk-gen-java')
+    annotationProcessor project(':crnk-gen:crnk-gen-java')
 
-	testImplementation  "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
-	testImplementation  "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
-	testImplementation  "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
-	testImplementation  "org.junit.vintage:junit-vintage-engine:$JUNIT_VERSION"
+    testImplementation  "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
+    testImplementation  "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
+    testImplementation  "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
+    testImplementation  "org.junit.vintage:junit-vintage-engine:$JUNIT_VERSION"
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.12'
-	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.12'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
-	implementation 'org.springframework.boot:spring-boot-starter-validation:3.1.12'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.12'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.12'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.1.12'
 
 	implementation 'org.hibernate:hibernate-core:6.6.0.Final'
-	implementation 'com.h2database:h2:2.2.224'
-	implementation 'com.squareup.okhttp3:okhttp:3.4.1'
-	implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'com.h2database:h2:2.2.224'
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation 'com.google.guava:guava:31.1-jre'
 
-	testImplementation  project(':crnk-client')
-	testImplementation  'io.rest-assured:rest-assured:5.4.0'
-	testImplementation  'io.rest-assured:json-schema-validator:5.4.0'
-	testImplementation  'commons-io:commons-io:2.14.0'
-	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
+    testImplementation  project(':crnk-client')
+    testImplementation  'io.rest-assured:rest-assured:5.4.0'
+    testImplementation  'io.rest-assured:json-schema-validator:5.4.0'
+    testImplementation  'commons-io:commons-io:2.14.0'
+    testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
 }
 
 dependencyManagement {

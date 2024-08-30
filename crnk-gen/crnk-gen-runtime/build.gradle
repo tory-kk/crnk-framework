@@ -4,30 +4,30 @@ plugins {
 }
 
 dependencies {
-	implementation project(':crnk-meta')
+    implementation project(':crnk-meta')
 
-	implementation 'org.reflections:reflections'
-	implementation project(':crnk-gen:crnk-gen-base')
-	implementation project(':crnk-meta')
+    implementation 'org.reflections:reflections'
+    implementation project(':crnk-gen:crnk-gen-base')
+    implementation project(':crnk-meta')
 
 	compileOnly 'junit:junit:4.13.1'
-	compileOnly 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
-	compileOnly 'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-api:2.0.0'
-	compileOnly 'org.jboss.weld.se:weld-se-core:5.1.2.Final'
-	compileOnly 'org.springframework.boot:spring-boot:3.1.12'
+    compileOnly 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
+    compileOnly 'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-api:2.0.0'
+    compileOnly 'org.jboss.weld.se:weld-se-core:5.1.2.Final'
+    compileOnly 'org.springframework.boot:spring-boot:3.1.12'
 
-	testImplementation  project(':crnk-meta')
-	testImplementation  project(':crnk-test')
-	testImplementation  project(':crnk-setup:crnk-setup-cdi')
-	testImplementation  project(':crnk-setup:crnk-setup-spring-boot3')
-	testImplementation  'commons-io:commons-io:2.14.0'
-	testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
-	testImplementation  'org.apache.deltaspike.core:deltaspike-core-impl:2.0.0'
-	testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
-	testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-impl:2.0.0'
-	testImplementation  'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-weld:2.0.0'
-	testImplementation  'org.jboss.weld.se:weld-se-core:5.1.2.Final'
-	testImplementation  'org.springframework.boot:spring-boot:3.1.12'
+    testImplementation  project(':crnk-meta')
+    testImplementation  project(':crnk-test')
+    testImplementation  project(':crnk-setup:crnk-setup-cdi')
+    testImplementation  project(':crnk-setup:crnk-setup-spring-boot3')
+    testImplementation  'commons-io:commons-io:2.14.0'
+    testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
+    testImplementation  'org.apache.deltaspike.core:deltaspike-core-impl:2.0.0'
+    testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
+    testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-impl:2.0.0'
+    testImplementation  'org.apache.deltaspike.cdictrl:deltaspike-cdictrl-weld:2.0.0'
+    testImplementation  'org.jboss.weld.se:weld-se-core:5.1.2.Final'
+    testImplementation  'org.springframework.boot:spring-boot:3.1.12'
 }
 
 // Gradle complains

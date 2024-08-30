@@ -4,14 +4,14 @@ plugins {
 }
 
 dependencies {
-	implementation project(':crnk-meta')
-	implementation project(':crnk-gen:crnk-gen-base')
+    implementation project(':crnk-meta')
+    implementation project(':crnk-gen:crnk-gen-base')
 
 
-	testImplementation  'commons-io:commons-io:2.14.0'
-	testImplementation  project(':crnk-meta')
-	testImplementation  project(':crnk-test')
-	testImplementation  project(':crnk-data:crnk-data-facet')
+    testImplementation  'commons-io:commons-io:2.14.0'
+    testImplementation  project(':crnk-meta')
+    testImplementation  project(':crnk-test')
+    testImplementation  project(':crnk-data:crnk-data-facet')
 }
 
 
