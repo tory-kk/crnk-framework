@@ -37,7 +37,8 @@ dependencies {
     testImplementation  project(':crnk-core')
     testImplementation  project(':crnk-meta')
     testImplementation  (project(':crnk-test')) {
-        // rest assured brings newer version of groovy which conflicts
+        // 'rest-assured' brings newer version of groovy which conflicts with the existing version of groovy that comes
+        // together with Gradle.
         exclude group: 'io.rest-assured', module: 'rest-assured'
     }
 

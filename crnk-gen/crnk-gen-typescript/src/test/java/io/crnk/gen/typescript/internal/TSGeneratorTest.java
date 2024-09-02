@@ -60,10 +60,10 @@ public class TSGeneratorTest {
     @Test
     public void getNpmPackageReturnsNotSpecifiedPackageWhenMetaElementNotMappedToNpmPackage() {
         TSMetaTransformationContext transformationContext = generator.createMetaTransformationContext();
-		MetaElement metaElement = new MetaElement();
+        MetaElement metaElement = new MetaElement();
         metaElement.setId("does.not.exist");
 
-		Assert.assertEquals("@packageNameNotSpecified", transformationContext.getNpmPackage(metaElement));
+        Assert.assertEquals("@packageNameNotSpecified", transformationContext.getNpmPackage(metaElement));
     }
 
     @Test
@@ -72,12 +72,12 @@ public class TSGeneratorTest {
         MetaElement metaElement = new MetaElement();
         metaElement.setId("does.not.exist");
 
-		Assert.assertEquals("", transformationContext.getDirectory(metaElement));
+        Assert.assertEquals("", transformationContext.getDirectory(metaElement));
     }
 
     @Test(expected = IllegalStateException.class)
     public void throwExceptionWhenTransformingUnknownMetaElement() {
-		MetaElement metaElement = new MetaElement();
+        MetaElement metaElement = new MetaElement();
         metaElement.setId("does.not.exist");
 
         TSMetaTransformationOptions options = Mockito.mock(TSMetaTransformationOptions.class);
