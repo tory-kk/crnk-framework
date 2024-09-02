@@ -29,3 +29,8 @@ dependencies {
     testImplementation  'org.jboss.weld.se:weld-se-core:5.1.2.Final'
     testImplementation  'org.springframework.boot:spring-boot:3.1.12'
 }
+
+// Gradle complains:
+// > Reason: Task ':crnk-gen:crnk-gen-runtime:compileTestJava' uses this output of task ':crnk-setup:crnk-setup-cdi:processResources' without declaring an explicit or implicit dependency.
+// > This can lead to incorrect results being produced, depending on what order the tasks are executed.
+compileTestJava.dependsOn ':crnk-setup:crnk-setup-cdi:processResources'

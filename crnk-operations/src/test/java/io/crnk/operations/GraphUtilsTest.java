@@ -45,8 +45,7 @@ public class GraphUtilsTest {
 		EqualsVerifier.forClass(GraphUtils.Node.class).usingGetClass()
 				.suppress(Warning.STRICT_INHERITANCE)
 				.withPrefabValues(GraphUtils.Edge.class, edge1, edge2)
-				// TODO: just to fix build
-				.withIgnoredFields("value", "inEdges", "outEdges")
+				.withIgnoredFields("value", "inEdges", "outEdges") // ignore unused fields in equals and hashcode
 				.suppress(Warning.NULL_FIELDS).verify();
 	}
 

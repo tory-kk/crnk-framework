@@ -14,11 +14,14 @@ dependencies {
 	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
 	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
 	compileOnlyApi 'org.springframework.security:spring-security-core:6.1.9'
-	compileOnlyApi 'org.hibernate:hibernate-core:6.4.8.Final'
+	compileOnlyApi 'org.hibernate:hibernate-core:6.6.0.Final'
 	compileOnlyApi 'org.springframework:spring-orm:6.0.21'
 
 	testImplementation  project(':crnk-data:crnk-data-jpa')
-	testImplementation  project(':crnk-home')
+	testImplementation (project(':crnk-home')) {
+		// Conflicts with Logback
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
 	testImplementation  project(':crnk-ui')
 	testImplementation  project(':crnk-client')
 	testImplementation  project(':crnk-test')
@@ -31,7 +34,7 @@ dependencies {
 	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
 	testImplementation  'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
 
-	testImplementation 'org.hibernate:hibernate-core:6.4.8.Final'
+	testImplementation 'org.hibernate:hibernate-core:6.6.0.Final'
 	testImplementation  'com.h2database:h2'
 
 	testImplementation  'org.springframework.boot:spring-boot-configuration-processor:3.1.12'

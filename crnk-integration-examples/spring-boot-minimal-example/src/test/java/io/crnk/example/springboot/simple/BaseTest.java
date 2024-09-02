@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.InputStream;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static java.nio.charset.Charset.*;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
@@ -33,7 +34,7 @@ public abstract class BaseTest {
 
 	private static String loadFile(String filename) throws Exception {
 		InputStream inputStream = BaseTest.class.getClassLoader().getResourceAsStream(filename);
-		return IOUtils.toString(inputStream);
+		return IOUtils.toString(inputStream, defaultCharset());
 	}
 
 	@Before
