@@ -146,11 +146,11 @@ public class HttpRequestDispatcherImplTest {
         when(controller.isAcceptable(any(JsonPath.class), eq("GET"))).thenCallRealMethod();
 
         Response expectedResponse = new Response(null, 200);
-		when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
-		when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
-				.thenReturn(new ImmediateResult<>(expectedResponse));
+        when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
+        when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
+                 .thenReturn(new ImmediateResult<>(expectedResponse));
 
-		ControllerRegistry controllerRegistry = container.getBoot().getControllerRegistry();
+        ControllerRegistry controllerRegistry = container.getBoot().getControllerRegistry();
         controllerRegistry.getControllers().clear();
         controllerRegistry.addController(controller);
 
@@ -175,8 +175,8 @@ public class HttpRequestDispatcherImplTest {
 
         // WHEN
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
-		when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
-		when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
+        when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
+        when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
 				.thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
@@ -201,9 +201,9 @@ public class HttpRequestDispatcherImplTest {
 
         // WHEN
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
-		when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
-		when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
-				.thenReturn(new ImmediateResult<>(null));
+        when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
+        when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
+               .thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
         sut.dispatchRequest(path, requestType, parameters, null);
