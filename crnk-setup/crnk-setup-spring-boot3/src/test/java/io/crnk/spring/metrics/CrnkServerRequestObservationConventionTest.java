@@ -33,7 +33,7 @@ public class CrnkServerRequestObservationConventionTest {
 	@Test
 	public void useFallbackIfNotCrnkResource() {
         ServerRequestObservationContext context = new ServerRequestObservationContext(new MockHttpServletRequest(), new MockHttpServletResponse());
-		context.setPathPattern("/any");
+        context.setPathPattern("/any");
 
 		Iterable<KeyValue> keyValues = crnkServerRequestObservationConvention.getLowCardinalityKeyValues(context);
 		assertEquals("/any", getUriTag(keyValues));

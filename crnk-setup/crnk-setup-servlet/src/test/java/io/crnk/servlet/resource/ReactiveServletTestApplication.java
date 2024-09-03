@@ -59,8 +59,8 @@ public class ReactiveServletTestApplication implements ApplicationListener<Servl
 		TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
 		factory.addConnectorCustomizers(connector -> {
 			// Same as in io.crnk.spring.setup.boot.core.CrnkTomcatAutoConfiguration
-            connector.setProperty("relaxedQueryChars", "[]{}");
-        });
+			connector.setProperty("relaxedQueryChars", "[]{}");
+		});
 		return factory;
 	}
 
