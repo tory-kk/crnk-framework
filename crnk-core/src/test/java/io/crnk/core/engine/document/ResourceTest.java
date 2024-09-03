@@ -11,9 +11,11 @@ public class ResourceTest {
 
 	@Test
 	public void testResourceEqualsContract() {
-		EqualsVerifier.forClass(Resource.class).usingGetClass()
+		EqualsVerifier.forClass(Resource.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
 				// https://github.com/jqno/equalsverifier/issues/486
 				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
-				.suppress(Warning.NONFINAL_FIELDS).verify();
+				.verify();
 	}
 }

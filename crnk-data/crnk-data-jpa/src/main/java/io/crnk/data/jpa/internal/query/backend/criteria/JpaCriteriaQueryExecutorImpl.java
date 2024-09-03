@@ -8,7 +8,8 @@ import io.crnk.meta.model.MetaDataObject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Tuple;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.query.sqm.tree.select.SqmSelectStatement;
 
 import java.util.ArrayList;
@@ -54,20 +55,19 @@ public class JpaCriteriaQueryExecutorImpl<T> extends AbstractQueryExecutorImpl<T
 
     @Override
     public long getTotalRowCount() {
-		final Set<Root<?>> roots = query.getRoots();
-		if (roots.size() != 1) {
-			throw new IllegalStateException("cannot compute totalRowCount in case of multiple query roots");
-		}
-		if (!query.getGroupList().isEmpty()) {
-			throw new IllegalStateException("cannot compute totalRowCount for grouped queries");
-		}
+        final Set<Root<?>> roots = query.getRoots();
+        if (roots.size() != 1) {
+            throw new IllegalStateException("cannot compute totalRowCount in case of multiple query roots");
+        }
+        if (!query.getGroupList().isEmpty()) {
+            throw new IllegalStateException("cannot compute totalRowCount for grouped queries");
+        }
 
-		final SqmSelectStatement<Long> countQuery = ((SqmSelectStatement<T>) query).createCountQuery();
-		countQuery.distinct(isDistinct());
+        final SqmSelectStatement<Long> countQuery = ((SqmSelectStatement<T>) query).createCountQuery();
+        countQuery.distinct(isDistinct());
 
-		final TypedQuery<Long> countTypedQuery = em.createQuery(countQuery);
-		return countTypedQuery.getSingleResult();
-	}
+        return em.createQuery(countQuery).getSingleResult();
+    }
 
     @Override
     public List<Tuple> getResultTuples() {

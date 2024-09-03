@@ -18,10 +18,12 @@ public class RelationshipTest {
 
 	@Test
 	public void testResourceEqualsContract() {
-		EqualsVerifier.forClass(Relationship.class).usingGetClass()
+		EqualsVerifier.forClass(Relationship.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
 				// https://github.com/jqno/equalsverifier/issues/486
 				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
-				.suppress(Warning.NONFINAL_FIELDS).verify();
+				.verify();
 	}
 
 	@Test

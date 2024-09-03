@@ -20,9 +20,9 @@ public class ResourceFieldTest {
 	@Test
 	public void testResourceIdEqualsContract() {
 		EqualsVerifier.forClass(ResourceFieldImpl.class)
+				.usingGetClass()
 				.suppress(Warning.NONFINAL_FIELDS, Warning.REFERENCE_EQUALITY)
 				.withPrefabValues(ResourceInformation.class, Mockito.mock(ResourceInformation.class), Mockito.mock(ResourceInformation.class))
-				.usingGetClass()
 				// ignore unused fields in equals and hashcode
 				.withIgnoredFields(
 						"jsonName", "type", "genericType", "serializeType",

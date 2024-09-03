@@ -4,6 +4,7 @@ import io.crnk.core.CoreTestContainer;
 import io.crnk.core.CoreTestModule;
 import io.crnk.core.engine.dispatcher.RequestDispatcher;
 import io.crnk.core.engine.dispatcher.Response;
+import io.crnk.core.engine.document.Document;
 import io.crnk.core.engine.filter.AbstractDocumentFilter;
 import io.crnk.core.engine.filter.DocumentFilter;
 import io.crnk.core.engine.filter.DocumentFilterChain;
@@ -21,6 +22,7 @@ import io.crnk.core.engine.internal.http.HttpRequestContextBaseAdapter;
 import io.crnk.core.engine.internal.http.HttpRequestDispatcherImpl;
 import io.crnk.core.engine.internal.http.JsonApiRequestProcessor;
 import io.crnk.core.engine.internal.information.repository.ResourceRepositoryInformationImpl;
+import io.crnk.core.engine.query.QueryAdapter;
 import io.crnk.core.engine.result.ImmediateResult;
 import io.crnk.core.exception.BadRequestException;
 import io.crnk.core.module.Module;
@@ -144,17 +146,18 @@ public class HttpRequestDispatcherImplTest {
         when(controller.isAcceptable(any(JsonPath.class), eq("GET"))).thenCallRealMethod();
 
         Response expectedResponse = new Response(null, 200);
-		when(controller.handle(any(), any(), any())).thenCallRealMethod();
-        when(controller.handleAsync(any(), any(), any())).thenReturn(new ImmediateResult<>(expectedResponse));
+		when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
+		when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
+				.thenReturn(new ImmediateResult<>(expectedResponse));
 
-        ControllerRegistry controllerRegistry = container.getBoot().getControllerRegistry();
+		ControllerRegistry controllerRegistry = container.getBoot().getControllerRegistry();
         controllerRegistry.getControllers().clear();
         controllerRegistry.addController(controller);
 
         RequestDispatcher sut = new HttpRequestDispatcherImpl(container.getModuleRegistry(), null);
         sut.process(requestContext);
 
-        verify(controller, times(1)).handleAsync(any(), any(), any());
+        verify(controller, times(1)).handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class));
     }
 
     @Test
@@ -172,14 +175,15 @@ public class HttpRequestDispatcherImplTest {
 
         // WHEN
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
-		when(controller.handle(any(), any(), any())).thenCallRealMethod();
-        when(controller.handleAsync(any(), any(), any())).thenReturn(new ImmediateResult<>(null));
+		when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
+		when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
+				.thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
         sut.dispatchRequest(path, requestType, parameters, null);
 
         // THEN
-        verify(controller, times(1)).handleAsync(any(), any(), any());
+        verify(controller, times(1)).handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class));
     }
 
     @Test
@@ -197,14 +201,15 @@ public class HttpRequestDispatcherImplTest {
 
         // WHEN
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
-		when(controller.handle(any(), any(), any())).thenCallRealMethod();
-        when(controller.handleAsync(any(), any(), any())).thenReturn(new ImmediateResult<>(null));
+		when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
+		when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
+				.thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
         sut.dispatchRequest(path, requestType, parameters, null);
 
         // THEN
-        verify(controller, times(1)).handleAsync(any(), any(), any());
+        verify(controller, times(1)).handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class));
     }
 
     @Ignore // FIXME reasonable action contributions

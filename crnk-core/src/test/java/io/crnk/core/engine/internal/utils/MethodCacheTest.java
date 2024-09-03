@@ -32,7 +32,9 @@ public class MethodCacheTest {
 
 	@Test
 	public void MethodCacheKeyEquals() {
-		EqualsVerifier.forClass(MethodCache.MethodCacheKey.class).usingGetClass().verify();
+		EqualsVerifier.forClass(MethodCache.MethodCacheKey.class)
+				.usingGetClass()
+				.verify();
 	}
 
 }

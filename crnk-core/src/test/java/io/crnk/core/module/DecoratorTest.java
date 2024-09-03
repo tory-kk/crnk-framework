@@ -21,16 +21,16 @@ public class DecoratorTest {
         Assert.assertSame(repository, decorator.getWrappedObject());
 
         decorator.create(null);
-        Mockito.verify(repository, Mockito.times(1)).create(Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).create(Mockito.isNull());
 
         decorator.delete(null);
-        Mockito.verify(repository, Mockito.times(1)).delete(Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).delete(Mockito.isNull());
 
         decorator.findAll(null);
-        Mockito.verify(repository, Mockito.times(1)).findAll(Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).findAll(Mockito.isNull());
 
         decorator.findAll(null, null);
-        Mockito.verify(repository, Mockito.times(1)).findAll(Mockito.any(), Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).findAll(Mockito.isNull(), Mockito.isNull());
 
         decorator.getResourceClass();
         Mockito.verify(repository, Mockito.times(1)).getResourceClass();
@@ -40,7 +40,7 @@ public class DecoratorTest {
         Mockito.verify(repository, Mockito.times(1)).save(Mockito.eq(schedule));
 
         decorator.findOne(null, null);
-        Mockito.verify(repository, Mockito.times(1)).findOne(Mockito.any(), Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).findOne(Mockito.isNull(), Mockito.isNull());
     }
 
     interface RegistryAwareResourceRepository extends ScheduleRepository, ResourceRegistryAware {
@@ -54,28 +54,28 @@ public class DecoratorTest {
         WrappedRelationshipRepository<Schedule, Long, Task, Long> decorator = new WrappedRelationshipRepository(repository);
 
         decorator.findManyTargets(null, null, null);
-        Mockito.verify(repository, Mockito.times(1)).findManyTargets(Mockito.any(), Mockito.any(),
-                Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).findManyTargets(Mockito.isNull(), Mockito.isNull(),
+                Mockito.isNull());
 
         decorator.findOneTarget(null, null, null);
-        Mockito.verify(repository, Mockito.times(1)).findOneTarget(Mockito.any(), Mockito.any(),
-                Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).findOneTarget(Mockito.isNull(), Mockito.isNull(),
+                Mockito.isNull());
 
         decorator.setRelation(null, null, null);
-        Mockito.verify(repository, Mockito.times(1)).setRelation(Mockito.any(), Mockito.any(),
-                Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).setRelation(Mockito.isNull(), Mockito.isNull(),
+                Mockito.isNull());
 
         decorator.addRelations(null, null, null);
-        Mockito.verify(repository, Mockito.times(1)).addRelations(Mockito.any(), Mockito.any(),
-                Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).addRelations(Mockito.isNull(), Mockito.isNull(),
+                Mockito.isNull());
 
         decorator.setRelations(null, null, null);
-        Mockito.verify(repository, Mockito.times(1)).setRelations(Mockito.any(), Mockito.any(),
-                Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).setRelations(Mockito.isNull(), Mockito.isNull(),
+                Mockito.isNull());
 
         decorator.removeRelations(null, null, null);
-        Mockito.verify(repository, Mockito.times(1)).removeRelations(Mockito.any(), Mockito.any(),
-                Mockito.any());
+        Mockito.verify(repository, Mockito.times(1)).removeRelations(Mockito.isNull(), Mockito.isNull(),
+                Mockito.isNull());
 
         decorator.getTargetResourceClass();
         Mockito.verify(repository, Mockito.times(1)).getTargetResourceClass();

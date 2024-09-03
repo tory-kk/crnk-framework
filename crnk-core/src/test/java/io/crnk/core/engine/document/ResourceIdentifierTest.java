@@ -8,6 +8,9 @@ public class ResourceIdentifierTest {
 
 	@Test
 	public void testResourceIdentifierEqualsContract() {
-		EqualsVerifier.forClass(ResourceIdentifier.class).usingGetClass().suppress(Warning.NONFINAL_FIELDS).verify();
+		EqualsVerifier.forClass(ResourceIdentifier.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				.verify();
 	}
 }

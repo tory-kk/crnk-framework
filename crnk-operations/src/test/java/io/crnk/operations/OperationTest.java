@@ -14,10 +14,12 @@ public class OperationTest {
 
 	@Test
 	public void testEquals() {
-		EqualsVerifier.forClass(Operation.class).usingGetClass()
+		EqualsVerifier.forClass(Operation.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
 				// https://github.com/jqno/equalsverifier/issues/486
 				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
-				.suppress(Warning.NONFINAL_FIELDS).verify();
+				.verify();
 
 	}
 
