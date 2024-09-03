@@ -19,19 +19,19 @@ public class ResourceFieldTest {
 
 	@Test
 	public void testResourceIdEqualsContract() {
-        EqualsVerifier.forClass(ResourceFieldImpl.class)
-                .usingGetClass()
-                .suppress(Warning.NONFINAL_FIELDS, Warning.REFERENCE_EQUALITY)
-                .withPrefabValues(ResourceInformation.class, Mockito.mock(ResourceInformation.class), Mockito.mock(ResourceInformation.class))
-                // ignore unused fields in equals and hashcode
-                .withIgnoredFields(
-                        "jsonName", "type", "genericType", "serializeType",
-                        "jsonIncludeStrategy", "oppositeResourceType", "lookupIncludeBehavior",
-                        "resourceFieldType", "oppositeName", "relationshipRepositoryBehavior",
-                        "accessor", "access", "idName", "idAccessor", "idType", "patchStrategy",
-                        "mappedBy", "versionRange", "embeddedType"
-                )
-                .verify();
+		EqualsVerifier.forClass(ResourceFieldImpl.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS, Warning.REFERENCE_EQUALITY)
+				.withPrefabValues(ResourceInformation.class, Mockito.mock(ResourceInformation.class), Mockito.mock(ResourceInformation.class))
+				// ignore unused fields in equals and hashcode
+				.withIgnoredFields(
+						"jsonName", "type", "genericType", "serializeType",
+						"jsonIncludeStrategy", "oppositeResourceType", "lookupIncludeBehavior",
+						"resourceFieldType", "oppositeName", "relationshipRepositoryBehavior",
+						"accessor", "access", "idName", "idAccessor", "idType", "patchStrategy",
+						"mappedBy", "versionRange", "embeddedType"
+				)
+				.verify();
 	}
 
 	@Test

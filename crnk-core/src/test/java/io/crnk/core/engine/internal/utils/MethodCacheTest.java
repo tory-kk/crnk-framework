@@ -30,11 +30,11 @@ public class MethodCacheTest {
 		Assert.assertFalse(method.isPresent());
 	}
 
-    @Test
-    public void MethodCacheKeyEquals() {
-        EqualsVerifier.forClass(MethodCache.MethodCacheKey.class)
-                .usingGetClass()
-                .verify();
-    }
+	@Test
+	public void MethodCacheKeyEquals() {
+		EqualsVerifier.forClass(MethodCache.MethodCacheKey.class)
+				.usingGetClass()
+				.verify();
+	}
 
 }

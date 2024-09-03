@@ -12,10 +12,10 @@ public class ResourcePermissionTest {
 
 	@Test
 	public void testEquals() {
-        EqualsVerifier.forClass(ResourceIdentifier.class)
-                .usingGetClass()
-                .suppress(Warning.NONFINAL_FIELDS)
-                .verify();
+		EqualsVerifier.forClass(ResourceIdentifier.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				.verify();
 
 		Assert.assertEquals(ResourcePermission.ALL, ResourcePermission.ALL);
 		Assert.assertEquals(ResourcePermission.DELETE, ResourcePermission.DELETE);

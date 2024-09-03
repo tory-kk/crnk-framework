@@ -13,20 +13,20 @@ public class ResourceEqualsContractTest {
 
 	@Test
 	public void testResourceIdEqualsContract() {
-        EqualsVerifier.forClass(ResourceIdentifier.class)
-                .usingGetClass()
-                .suppress(Warning.NONFINAL_FIELDS)
-                .verify();
+		EqualsVerifier.forClass(ResourceIdentifier.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				.verify();
 	}
 
 	@Test
 	public void testResourceEqualsContract() {
-         EqualsVerifier.forClass(Resource.class)
-                .usingGetClass()
-                .suppress(Warning.NONFINAL_FIELDS)
-                // https://github.com/jqno/equalsverifier/issues/486
-                .withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
-                .verify();
+		EqualsVerifier.forClass(Resource.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				// https://github.com/jqno/equalsverifier/issues/486
+				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
+				.verify();
 	}
 
 }
