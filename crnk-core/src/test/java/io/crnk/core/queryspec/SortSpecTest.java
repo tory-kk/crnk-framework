@@ -51,10 +51,10 @@ public class SortSpecTest {
 
 	@Test
 	public void testEquals() {
-		EqualsVerifier.forClass(SortSpec.class)
-				.usingGetClass()
-				.suppress(Warning.NONFINAL_FIELDS)
-				.verify();
+        EqualsVerifier.forClass(SortSpec.class)
+                .usingGetClass()
+                .suppress(Warning.NONFINAL_FIELDS)
+                .verify();
 
 		SortSpec spec1 = new SortSpec(Arrays.asList("name1"), Direction.ASC);
 		SortSpec spec2 = new SortSpec(Arrays.asList("name1"), Direction.ASC);
