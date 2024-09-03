@@ -177,7 +177,7 @@ public class HttpRequestDispatcherImplTest {
         when(controller.isAcceptable(any(JsonPath.class), eq(requestType))).thenCallRealMethod();
         when(controller.handle(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class))).thenCallRealMethod();
         when(controller.handleAsync(any(JsonPath.class), any(QueryAdapter.class), nullable(Document.class)))
-				.thenReturn(new ImmediateResult<>(null));
+                .thenReturn(new ImmediateResult<>(null));
 
         Map<String, Set<String>> parameters = new HashMap<>();
         sut.dispatchRequest(path, requestType, parameters, null);
