@@ -10,7 +10,9 @@ public class ResourceFieldAccessTest {
 
 	@Test
 	public void testEqualsContract() {
-		EqualsVerifier.forClass(ResourceFieldAccess.class).usingGetClass().verify();
+		EqualsVerifier.forClass(ResourceFieldAccess.class)
+				.usingGetClass()
+				.verify();
 	}
 
 	@Test

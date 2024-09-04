@@ -15,6 +15,8 @@ import io.crnk.spring.internal.SpringServiceDiscovery;
 import io.crnk.test.mock.TestModule;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -41,6 +43,16 @@ public class TestConfiguration implements ApplicationContextAware {
 		boot.addModule(new ServletModule(boot.getModuleRegistry().getHttpRequestContextProvider()));
 		boot.boot();
 		return boot;
+	}
+
+	@Bean
+	public ConfigurableServletWebServerFactory webServerFactory() {
+		TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+		factory.addConnectorCustomizers(connector -> {
+			// Same as in io.crnk.spring.setup.boot.core.CrnkTomcatAutoConfiguration
+			connector.setProperty("relaxedQueryChars", "[]{}");
+		});
+		return factory;
 	}
 
 	@Bean

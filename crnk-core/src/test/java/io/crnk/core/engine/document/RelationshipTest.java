@@ -1,6 +1,9 @@
 package io.crnk.core.engine.document;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.NullNode;
+import com.fasterxml.jackson.databind.node.TextNode;
 import io.crnk.core.engine.internal.jackson.JacksonModule;
 import io.crnk.core.utils.Nullable;
 import nl.jqno.equalsverifier.EqualsVerifier;
@@ -15,7 +18,12 @@ public class RelationshipTest {
 
 	@Test
 	public void testResourceEqualsContract() {
-		EqualsVerifier.forClass(Relationship.class).usingGetClass().suppress(Warning.NONFINAL_FIELDS).verify();
+		EqualsVerifier.forClass(Relationship.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				// https://github.com/jqno/equalsverifier/issues/486
+				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
+				.verify();
 	}
 
 	@Test

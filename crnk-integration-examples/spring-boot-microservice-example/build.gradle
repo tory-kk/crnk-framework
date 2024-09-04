@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'java-library'
-	id 'org.springframework.boot' version '3.1.4'
+	id 'org.springframework.boot' version '3.1.12'
 	id 'io.spring.dependency-management'
 	id 'application'
 }
@@ -11,21 +11,24 @@ mainClassName = "io.crnk.example.springboot.microservice.MicroServiceApplication
 dependencies {
 
 	implementation project(':crnk-setup:crnk-setup-spring-boot3')
-	implementation project(':crnk-home')
+	implementation (project(':crnk-home')) {
+		// Conflicts with Logback
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
 	implementation project(':crnk-testkit')
 	implementation project(':crnk-client')
 	implementation 'com.squareup.okhttp3:okhttp:3.4.1'
 
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.12'
 
 	testImplementation  "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
 	testImplementation  "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
 	testImplementation  "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
 	testImplementation  "org.junit.vintage:junit-vintage-engine:$JUNIT_VERSION"
 
-	testImplementation  'io.rest-assured:rest-assured:5.3.2'
-	testImplementation  'io.rest-assured:json-schema-validator:5.3.2'
-	testImplementation  'org.springframework.boot:spring-boot-starter-test'
+	testImplementation  'io.rest-assured:rest-assured:5.4.0'
+	testImplementation  'io.rest-assured:json-schema-validator:5.4.0'
+	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
 	testImplementation  'commons-io:commons-io:2.14.0'
 
 }

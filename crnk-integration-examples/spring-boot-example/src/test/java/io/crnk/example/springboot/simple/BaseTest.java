@@ -1,11 +1,11 @@
 package io.crnk.example.springboot.simple;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.ValidatableResponse;
 import io.crnk.client.CrnkClient;
 import io.crnk.example.springboot.SpringBootExampleApplication;
 import io.crnk.data.jpa.JpaModule;
 import io.crnk.validation.ValidationModule;
+import io.restassured.RestAssured;
+import io.restassured.response.ValidatableResponse;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.InputStream;
 
-import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;

@@ -14,13 +14,12 @@
 			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
 			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem"/>
 			<property name="jakarta.persistence.jdbc.user" value="sa"/>
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
 
 			<property name="hibernate.id.new_generator_mappings" value="true"/>
-			<property name="hibernate.dialect" value="H2"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 			<property name="hibernate.format_sql" value="false"/>
-			<property name="hibernate.hbm2ddl.auto" value="drop-and-create"/>
-			<property name="hibernate.validator.autoregister_listeners"
-					  value="true"/>
+			<property name="hibernate.validator.autoregister_listeners" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>
