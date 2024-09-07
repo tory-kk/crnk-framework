@@ -12,7 +12,7 @@ Crnk is an implementation of the [JSON API](https://jsonapi.org/) specification 
 facilitate building RESTful applications. It provides many conventions and building blocks that application can benefit from.
 This includes features such as  sorting, filtering, pagination, requesting complex object graphs, sparse
 field sets, attaching links to data or atomically execute multiple operations. Further integration
-with frameworks and libraries such as Spring, CDI, JPA, Bean Validation, Dropwizard, Servlet API, Zipkin and
+with frameworks and libraries such as Spring, CDI, JPA, Hibernate, Bean Validation, Dropwizard, Servlet API, Zipkin
 and more ensure that JSON API plays well together with the Java ecosystem. Have a look at
 [www.crnk.io](http://www.crnk.io) and the  [documentation](http://www.crnk.io/releases/stable/documentation/) for more detailed
 information.
@@ -28,7 +28,7 @@ Note that due to reliability issues of MavenCentral we only rarely publish there
 
 ## Requirements
 
-Crnk requires Java 1.8 or later and an SLF4J setup for logging.
+Crnk requires Java 17, Spring Boot 3, Hibernate 6.6.0 or later and an SLF4J setup for logging.
 
 ## Example
 

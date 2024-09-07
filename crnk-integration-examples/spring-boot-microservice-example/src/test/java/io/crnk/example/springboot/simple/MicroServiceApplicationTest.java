@@ -3,8 +3,6 @@ package io.crnk.example.springboot.simple;
 import java.io.Serializable;
 import java.util.Arrays;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Response;
 import io.crnk.client.CrnkClient;
 import io.crnk.client.http.HttpAdapter;
 import io.crnk.core.queryspec.QuerySpec;
@@ -14,6 +12,8 @@ import io.crnk.example.springboot.microservice.MicroServiceApplication;
 import io.crnk.example.springboot.microservice.project.Project;
 import io.crnk.example.springboot.microservice.task.Task;
 import io.crnk.testkit.RandomWalkLinkChecker;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'java-library'
-	id 'org.springframework.boot' version '3.1.4'
+	id 'org.springframework.boot' version '3.1.12'
 	id 'io.spring.dependency-management'
 }
 
@@ -13,6 +13,7 @@ dependencies {
 
 	jar {
 		enabled = true
+		archiveClassifier = ''
 	}
 
 	api project(':crnk-setup:crnk-setup-servlet')
@@ -31,17 +32,20 @@ dependencies {
 
 	compileOnly 'io.opentracing:opentracing-api:0.31.0'
 
-	compileOnlyApi 'org.hibernate:hibernate-core-jakarta:5.6.15.Final'
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-web'
-	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor'
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator'
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-validation'
-	compileOnlyApi 'org.springframework.security:spring-security-core'
-	compileOnlyApi 'org.springframework:spring-orm'
+	compileOnlyApi 'org.hibernate:hibernate-core:6.6.0.Final'
+	compileOnlyApi 'org.springframework.boot:spring-boot-starter-web:3.1.12'
+	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
+	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
+	compileOnlyApi 'org.springframework.boot:spring-boot-starter-validation:3.1.12'
+	compileOnlyApi 'org.springframework.security:spring-security-core:6.1.9'
+	compileOnlyApi 'org.springframework:spring-orm:6.0.21'
 
 	testImplementation  project(':crnk-data:crnk-data-jpa')
 	testImplementation  project(':crnk-validation')
-	testImplementation  project(':crnk-home')
+	testImplementation (project(':crnk-home')) {
+		// Conflicts with Logback
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
 	testImplementation  project(':crnk-meta')
 	testImplementation  project(':crnk-operations')
 	testImplementation  project(':crnk-security')
@@ -51,18 +55,18 @@ dependencies {
 	testImplementation  project(':crnk-data:crnk-data-facet')
 	testImplementation  project(':crnk-format:crnk-format-plain-json')
 
-	testImplementation  'org.springframework.boot:spring-boot-starter-data-jpa'
-	testImplementation  'org.springframework.boot:spring-boot-starter-web'
-	testImplementation  'org.springframework.boot:spring-boot-starter-test'
-	testImplementation  'org.springframework.boot:spring-boot-starter-actuator'
-	testImplementation  'org.springframework.boot:spring-boot-starter-validation'
+	testImplementation  'org.springframework.boot:spring-boot-starter-data-jpa:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-web:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-validation:3.1.12'
 
-	testImplementation	'org.hibernate:hibernate-core-jakarta:5.6.15.Final'
+	testImplementation	'org.hibernate:hibernate-core:6.6.0.Final'
 	testImplementation  'com.h2database:h2'
 
-	testImplementation  'org.springframework.boot:spring-boot-configuration-processor'
-	testImplementation  'org.springframework:spring-orm'
-	testImplementation  'org.springframework.security:spring-security-core'
+	testImplementation  'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
+	testImplementation  'org.springframework:spring-orm:6.0.21'
+	testImplementation  'org.springframework.security:spring-security-core:6.1.9'
 	testImplementation  'net.javacrumbs.json-unit:json-unit-fluent:1.5.3'
 	testImplementation  'org.mockito:mockito-core:5.5.0'
 	testImplementation  'pl.pragmatists:JUnitParams:1.1.1'

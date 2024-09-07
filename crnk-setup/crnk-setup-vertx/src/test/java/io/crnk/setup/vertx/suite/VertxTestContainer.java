@@ -10,14 +10,10 @@ import io.crnk.test.mock.ClientTestModule;
 import io.crnk.test.mock.models.RelationIdTestResource;
 import io.crnk.test.mock.models.Schedule;
 import io.crnk.test.suite.TestContainer;
-import io.reactivex.subjects.SingleSubject;
-import io.vertx.core.AsyncResult;
-import io.vertx.core.Handler;
-import io.vertx.core.Vertx;
-import io.vertx.core.VertxOptions;
+import io.reactivex.rxjava3.subjects.SingleSubject;
+import io.vertx.core.*;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.net.ServerSocket;
 
 public class VertxTestContainer implements TestContainer {

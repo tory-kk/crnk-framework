@@ -32,13 +32,35 @@ public class CrnkServerRequestObservationConventionTest {
 
 	@Test
 	public void useFallbackIfNotCrnkResource() {
-		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.setAttribute("org.springframework.web.servlet.HandlerMapping.bestMatchingPattern", "/any");
-
-		ServerRequestObservationContext context = new ServerRequestObservationContext(request, new MockHttpServletResponse());
+		ServerRequestObservationContext context = new ServerRequestObservationContext(new MockHttpServletRequest(), new MockHttpServletResponse());
+		context.setPathPattern("/any");
 
 		Iterable<KeyValue> keyValues = crnkServerRequestObservationConvention.getLowCardinalityKeyValues(context);
 		assertEquals("/any", getUriTag(keyValues));
+	}
+
+	@SuppressWarnings("unused")
+	private Object[] handleCrnkResourceParameters() {
+		String id = "124";
+
+		return new Object[]{
+				new Object[]{
+						"/tasks",
+						"/tasks"
+				},
+				new Object[]{
+						"/tasks/" + id,
+						"/tasks/{id}"
+				},
+				new Object[]{
+						"/tasks/" + id + "/name",
+						"/tasks/{id}/name"
+				},
+				new Object[]{
+						"/tasks/" + id + "/relationships/project",
+						"/tasks/{id}/relationships/project"
+				}
+		};
 	}
 
 	@Test

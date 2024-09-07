@@ -23,7 +23,7 @@ components:
     PageLimit:
       description: Max number of items
       in: query
-      name: page[limit]
+      name: "page[limit]"
       schema:
         default: 100
         format: int64
@@ -32,7 +32,7 @@ components:
     PageOffset:
       description: Page offset
       in: query
-      name: page[offset]
+      name: "page[offset]"
       schema:
         default: 0
         format: int64
@@ -42,7 +42,7 @@ components:
       in: query
       name: fields
       schema:
-        default: id,name
+        default: "id,name"
         type: string
     SimpleTasksInclude:
       description: simpleTasks relationships to include (csv)
@@ -56,104 +56,104 @@ components:
       name: id
       required: true
       schema:
-        $ref: '#/components/schemas/SimpleTasksIdResourceAttribute'
+        $ref: "#/components/schemas/SimpleTasksIdResourceAttribute"
     SimpleTasksSort:
       description: simpleTasks sort order (csv)
       in: query
       name: sort
       schema:
-        example: id,name
+        example: "id,name"
         type: string
   responses:
-    400:
+    "400":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: BAD_REQUEST
-    401:
+    "401":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: UNAUTHORIZED
-    403:
+    "403":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: FORBIDDEN
-    404:
+    "404":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: NOT_FOUND
-    405:
+    "405":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: METHOD_NOT_ALLOWED
-    409:
+    "409":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: CONFLICT
-    412:
+    "412":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: PRECONDITION_FAILED
-    415:
+    "415":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: UNSUPPORTED_MEDIA_TYPE
-    422:
+    "422":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: UNPROCESSABLE_ENTITY
-    500:
+    "500":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: INTERNAL_SERVER_ERROR
-    501:
+    "501":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: NOT_IMPLEMENTED
-    502:
+    "502":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: BAD_GATEWAY
-    503:
+    "503":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: SERVICE_UNAVAILABLE
-    504:
+    "504":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: GATEWAY_TIMEOUT
-    505:
+    "505":
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/Failure'
+            $ref: "#/components/schemas/Failure"
       description: HTTP_VERSION_NOT_SUPPORTED
     NoContent:
       description: No Content
@@ -161,36 +161,37 @@ components:
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/SimpleTasksResourceReferenceResponseSchema'
+            $ref: "#/components/schemas/SimpleTasksResourceReferenceResponseSchema"
       description: OK
     SimpleTasksResourceReferencesResponse:
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/SimpleTasksResourceReferencesResponseSchema'
+            $ref: "#/components/schemas/SimpleTasksResourceReferencesResponseSchema"
       description: OK
     SimpleTasksResourceResponse:
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/SimpleTasksResourceResponseSchema'
+            $ref: "#/components/schemas/SimpleTasksResourceResponseSchema"
       description: OK
     SimpleTasksResourcesResponse:
       content:
         application/vnd.api+json:
           schema:
-            $ref: '#/components/schemas/SimpleTasksResourcesResponseSchema'
+            $ref: "#/components/schemas/SimpleTasksResourcesResponseSchema"
       description: OK
   schemas:
     ApiError:
       additionalProperties: false
       properties:
         code:
-          description: an application-specific error code, expressed as a string value
+          description: "an application-specific error code, expressed as a string\
+            \ value"
           type: string
         detail:
-          description: a human-readable explanation specific to this occurrence of
-            the problem. Like 'title', this field’s value can be localized.
+          description: "a human-readable explanation specific to this occurrence of\
+            \ the problem. Like 'title', this field’s value can be localized."
           type: string
         id:
           description: a unique identifier for this particular occurrence of the problem
@@ -203,7 +204,7 @@ components:
               type: string
           type: object
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: "#/components/schemas/Meta"
         source:
           properties:
             parameter:
@@ -211,18 +212,18 @@ components:
                 error
               type: string
             pointer:
-              description: a JSON Pointer [RFC6901] to the associated entity in the
-                request document
+              description: "a JSON Pointer [RFC6901] to the associated entity in the\
+                \ request document"
               type: string
           type: object
         status:
-          description: the HTTP status code applicable to this problem, expressed
-            as a string value
+          description: "the HTTP status code applicable to this problem, expressed\
+            \ as a string value"
           type: string
         title:
-          description: a short, human-readable summary of the problem that SHOULD
-            NOT change from occurrence to occurrence of the problem, except for purposes
-            of localization
+          description: "a short, human-readable summary of the problem that SHOULD\
+            \ NOT change from occurrence to occurrence of the problem, except for\
+            \ purposes of localization"
           type: string
       type: object
     Failure:
@@ -230,15 +231,15 @@ components:
       properties:
         errors:
           items:
-            $ref: '#/components/schemas/ApiError'
+            $ref: "#/components/schemas/ApiError"
           type: array
           uniqueItems: true
         jsonapi:
-          $ref: '#/components/schemas/JsonApi'
+          $ref: "#/components/schemas/JsonApi"
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: "#/components/schemas/Meta"
       required:
       - errors
       type: object
@@ -246,11 +247,11 @@ components:
       additionalProperties: false
       properties:
         jsonapi:
-          $ref: '#/components/schemas/JsonApi'
+          $ref: "#/components/schemas/JsonApi"
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: "#/components/schemas/Meta"
       required:
       - meta
       type: object
@@ -261,8 +262,8 @@ components:
           type: string
       type: object
     Link:
-      description: 'A link **MUST** be represented as either: a string containing
-        the link''s URL or a link object.'
+      description: "A link **MUST** be represented as either: a string containing\
+        \ the link's URL or a link object."
       oneOf:
       - description: A string containing the link's URL.
         format: uri
@@ -273,16 +274,16 @@ components:
             format: uri
             type: string
           meta:
-            $ref: '#/components/schemas/Meta'
+            $ref: "#/components/schemas/Meta"
         required:
         - href
         type: object
     Links:
       allOf:
       - additionalProperties:
-          $ref: '#/components/schemas/Link'
+          $ref: "#/components/schemas/Link"
         type: object
-      - $ref: '#/components/schemas/Pagination'
+      - $ref: "#/components/schemas/Pagination"
       description: Link members related to the primary data.
     Meta:
       additionalProperties: true
@@ -324,26 +325,26 @@ components:
       properties:
         data:
           allOf:
-          - $ref: '#/components/schemas/SimpleTasksResourceReference'
-          - $ref: '#/components/schemas/SimpleTasksResourcePatchAttributes'
+          - $ref: "#/components/schemas/SimpleTasksResourceReference"
+          - $ref: "#/components/schemas/SimpleTasksResourcePatchAttributes"
       required:
       - data
       type: object
     SimpleTasksPostResource:
       properties:
         data:
-          $ref: '#/components/schemas/SimpleTasksPostResourceData'
+          $ref: "#/components/schemas/SimpleTasksPostResourceData"
       required:
       - data
       type: object
     SimpleTasksPostResourceData:
       allOf:
-      - $ref: '#/components/schemas/SimpleTasksPostResourceReference'
-      - $ref: '#/components/schemas/SimpleTasksResourcePostAttributes'
+      - $ref: "#/components/schemas/SimpleTasksPostResourceReference"
+      - $ref: "#/components/schemas/SimpleTasksResourcePostAttributes"
     SimpleTasksPostResourceReference:
       properties:
         id:
-          $ref: '#/components/schemas/SimpleTasksIdResourceAttribute'
+          $ref: "#/components/schemas/SimpleTasksIdResourceAttribute"
         type:
           description: The JSON:API resource type (simpleTasks)
           enum:
@@ -356,7 +357,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/SimpleTasksPostResourceData'
+            $ref: "#/components/schemas/SimpleTasksPostResourceData"
           type: array
       required:
       - data
@@ -366,7 +367,7 @@ components:
         attributes:
           properties:
             name:
-              $ref: '#/components/schemas/SimpleTasksNameResourceAttribute'
+              $ref: "#/components/schemas/SimpleTasksNameResourceAttribute"
           type: object
       type: object
     SimpleTasksResourceLinks:
@@ -374,10 +375,10 @@ components:
       properties:
         links:
           additionalProperties:
-            $ref: '#/components/schemas/Link'
+            $ref: "#/components/schemas/Link"
           properties:
             self:
-              default: /simpleTasks/{id}
+              default: "/simpleTasks/{id}"
               format: uri
               type: string
           type: object
@@ -387,7 +388,7 @@ components:
         attributes:
           properties:
             name:
-              $ref: '#/components/schemas/SimpleTasksNameResourceAttribute'
+              $ref: "#/components/schemas/SimpleTasksNameResourceAttribute"
           type: object
       type: object
     SimpleTasksResourcePostAttributes:
@@ -395,13 +396,13 @@ components:
         attributes:
           properties:
             name:
-              $ref: '#/components/schemas/SimpleTasksNameResourceAttribute'
+              $ref: "#/components/schemas/SimpleTasksNameResourceAttribute"
           type: object
       type: object
     SimpleTasksResourceReference:
       properties:
         id:
-          $ref: '#/components/schemas/SimpleTasksIdResourceAttribute'
+          $ref: "#/components/schemas/SimpleTasksIdResourceAttribute"
         type:
           description: The JSON:API resource type (simpleTasks)
           enum:
@@ -414,37 +415,37 @@ components:
     SimpleTasksResourceReferenceResponseSchema:
       properties:
         data:
-          $ref: '#/components/schemas/SimpleTasksResourceReference'
+          $ref: "#/components/schemas/SimpleTasksResourceReference"
       type: object
     SimpleTasksResourceReferencesResponseSchema:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/SimpleTasksResourceReference'
+            $ref: "#/components/schemas/SimpleTasksResourceReference"
           type: array
       type: object
     SimpleTasksResourceResponseSchema:
       allOf:
-      - $ref: '#/components/schemas/Success'
+      - $ref: "#/components/schemas/Success"
       - properties:
           data:
-            $ref: '#/components/schemas/SimpleTasksResourceSchema'
+            $ref: "#/components/schemas/SimpleTasksResourceSchema"
         required:
         - data
     SimpleTasksResourceSchema:
       allOf:
-      - $ref: '#/components/schemas/SimpleTasksResourceReference'
-      - $ref: '#/components/schemas/SimpleTasksResourceAttributes'
-      - $ref: '#/components/schemas/SimpleTasksResourceLinks'
+      - $ref: "#/components/schemas/SimpleTasksResourceReference"
+      - $ref: "#/components/schemas/SimpleTasksResourceAttributes"
+      - $ref: "#/components/schemas/SimpleTasksResourceLinks"
       required:
       - attributes
     SimpleTasksResourcesResponseSchema:
       allOf:
-      - $ref: '#/components/schemas/Success'
+      - $ref: "#/components/schemas/Success"
       - properties:
           data:
             items:
-              $ref: '#/components/schemas/SimpleTasksResourceSchema'
+              $ref: "#/components/schemas/SimpleTasksResourceSchema"
             type: array
         required:
         - data
@@ -468,16 +469,17 @@ components:
           type: array
           uniqueItems: true
         jsonapi:
-          $ref: '#/components/schemas/JsonApi'
+          $ref: "#/components/schemas/JsonApi"
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: "#/components/schemas/Meta"
       required:
       - data
       type: object
 info:
-  description: OpenAPI document with autogenerated paths, components, responses, etc.
+  description: "OpenAPI document with autogenerated paths, components, responses,\
+    \ etc."
   title: Title From Template
   version: 0.1.0
 openapi: 3.0.1
@@ -496,59 +498,59 @@ paths:
           - application/vnd.api+json
           - application/json
           type: string
-      - $ref: '#/components/parameters/NestedFilter'
+      - $ref: "#/components/parameters/NestedFilter"
       - description: Filter by id (csv)
         in: query
-        name: filter[id]
+        name: "filter[id]"
         schema:
           type: string
       - description: Filter by name (csv)
         in: query
-        name: filter[name]
+        name: "filter[name]"
         schema:
           type: string
-      - $ref: '#/components/parameters/SimpleTasksFields'
-      - $ref: '#/components/parameters/SimpleTasksInclude'
-      - $ref: '#/components/parameters/SimpleTasksSort'
-      - $ref: '#/components/parameters/PageLimit'
-      - $ref: '#/components/parameters/PageOffset'
+      - $ref: "#/components/parameters/SimpleTasksFields"
+      - $ref: "#/components/parameters/SimpleTasksInclude"
+      - $ref: "#/components/parameters/SimpleTasksSort"
+      - $ref: "#/components/parameters/PageLimit"
+      - $ref: "#/components/parameters/PageOffset"
       responses:
-        200:
-          $ref: '#/components/responses/SimpleTasksResourcesResponse'
-        202:
-          $ref: '#/components/responses/SimpleTasksResourceReferencesResponse'
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
-        405:
-          $ref: '#/components/responses/405'
-        409:
-          $ref: '#/components/responses/409'
-        412:
-          $ref: '#/components/responses/412'
-        415:
-          $ref: '#/components/responses/415'
-        422:
-          $ref: '#/components/responses/422'
-        500:
-          $ref: '#/components/responses/500'
-        501:
-          $ref: '#/components/responses/501'
-        502:
-          $ref: '#/components/responses/502'
-        503:
-          $ref: '#/components/responses/503'
-        504:
-          $ref: '#/components/responses/504'
-        505:
-          $ref: '#/components/responses/505'
+        "200":
+          $ref: "#/components/responses/SimpleTasksResourcesResponse"
+        "202":
+          $ref: "#/components/responses/SimpleTasksResourceReferencesResponse"
+        "204":
+          $ref: "#/components/responses/NoContent"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "405":
+          $ref: "#/components/responses/405"
+        "409":
+          $ref: "#/components/responses/409"
+        "412":
+          $ref: "#/components/responses/412"
+        "415":
+          $ref: "#/components/responses/415"
+        "422":
+          $ref: "#/components/responses/422"
+        "500":
+          $ref: "#/components/responses/500"
+        "501":
+          $ref: "#/components/responses/501"
+        "502":
+          $ref: "#/components/responses/502"
+        "503":
+          $ref: "#/components/responses/503"
+        "504":
+          $ref: "#/components/responses/504"
+        "505":
+          $ref: "#/components/responses/505"
       summary: This summary and description is in the template and not overwritten
         on generation
       x-amazon-apigateway-integration:
@@ -573,51 +575,51 @@ paths:
           application/vnd.api+json:
             schema:
               oneOf:
-              - $ref: '#/components/schemas/SimpleTasksPostResource'
-              - $ref: '#/components/schemas/SimpleTasksPostResources'
+              - $ref: "#/components/schemas/SimpleTasksPostResource"
+              - $ref: "#/components/schemas/SimpleTasksPostResources"
       responses:
-        201:
+        "201":
           content:
             application/vnd.api+json:
               schema:
                 oneOf:
-                - $ref: '#/components/schemas/SimpleTasksResourceResponseSchema'
-                - $ref: '#/components/schemas/SimpleTasksResourcesResponseSchema'
+                - $ref: "#/components/schemas/SimpleTasksResourceResponseSchema"
+                - $ref: "#/components/schemas/SimpleTasksResourcesResponseSchema"
           description: Created
-        202:
-          $ref: '#/components/responses/SimpleTasksResourceReferencesResponse'
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
-        405:
-          $ref: '#/components/responses/405'
-        409:
-          $ref: '#/components/responses/409'
-        412:
-          $ref: '#/components/responses/412'
-        415:
-          $ref: '#/components/responses/415'
-        422:
-          $ref: '#/components/responses/422'
-        500:
-          $ref: '#/components/responses/500'
-        501:
-          $ref: '#/components/responses/501'
-        502:
-          $ref: '#/components/responses/502'
-        503:
-          $ref: '#/components/responses/503'
-        504:
-          $ref: '#/components/responses/504'
-        505:
-          $ref: '#/components/responses/505'
+        "202":
+          $ref: "#/components/responses/SimpleTasksResourceReferencesResponse"
+        "204":
+          $ref: "#/components/responses/NoContent"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "405":
+          $ref: "#/components/responses/405"
+        "409":
+          $ref: "#/components/responses/409"
+        "412":
+          $ref: "#/components/responses/412"
+        "415":
+          $ref: "#/components/responses/415"
+        "422":
+          $ref: "#/components/responses/422"
+        "500":
+          $ref: "#/components/responses/500"
+        "501":
+          $ref: "#/components/responses/501"
+        "502":
+          $ref: "#/components/responses/502"
+        "503":
+          $ref: "#/components/responses/503"
+        "504":
+          $ref: "#/components/responses/504"
+        "505":
+          $ref: "#/components/responses/505"
   /simpleTasks/{id}:
     delete:
       description: Delete a SimpleTasks
@@ -631,44 +633,44 @@ paths:
           - application/vnd.api+json
           - application/json
           type: string
-      - $ref: '#/components/parameters/SimpleTasksPrimaryKey'
+      - $ref: "#/components/parameters/SimpleTasksPrimaryKey"
       responses:
-        200:
+        "200":
           description: OK
-        202:
-          $ref: '#/components/responses/SimpleTasksResourceReferencesResponse'
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
-        405:
-          $ref: '#/components/responses/405'
-        409:
-          $ref: '#/components/responses/409'
-        412:
-          $ref: '#/components/responses/412'
-        415:
-          $ref: '#/components/responses/415'
-        422:
-          $ref: '#/components/responses/422'
-        500:
-          $ref: '#/components/responses/500'
-        501:
-          $ref: '#/components/responses/501'
-        502:
-          $ref: '#/components/responses/502'
-        503:
-          $ref: '#/components/responses/503'
-        504:
-          $ref: '#/components/responses/504'
-        505:
-          $ref: '#/components/responses/505'
+        "202":
+          $ref: "#/components/responses/SimpleTasksResourceReferencesResponse"
+        "204":
+          $ref: "#/components/responses/NoContent"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "405":
+          $ref: "#/components/responses/405"
+        "409":
+          $ref: "#/components/responses/409"
+        "412":
+          $ref: "#/components/responses/412"
+        "415":
+          $ref: "#/components/responses/415"
+        "422":
+          $ref: "#/components/responses/422"
+        "500":
+          $ref: "#/components/responses/500"
+        "501":
+          $ref: "#/components/responses/501"
+        "502":
+          $ref: "#/components/responses/502"
+        "503":
+          $ref: "#/components/responses/503"
+        "504":
+          $ref: "#/components/responses/504"
+        "505":
+          $ref: "#/components/responses/505"
     get:
       description: Retrieve a simpleTasks resource
       parameters:
@@ -681,53 +683,53 @@ paths:
           - application/vnd.api+json
           - application/json
           type: string
-      - $ref: '#/components/parameters/SimpleTasksPrimaryKey'
-      - $ref: '#/components/parameters/SimpleTasksFields'
-      - $ref: '#/components/parameters/SimpleTasksInclude'
+      - $ref: "#/components/parameters/SimpleTasksPrimaryKey"
+      - $ref: "#/components/parameters/SimpleTasksFields"
+      - $ref: "#/components/parameters/SimpleTasksInclude"
       responses:
-        200:
-          $ref: '#/components/responses/SimpleTasksResourceResponse'
-        202:
-          $ref: '#/components/responses/SimpleTasksResourceReferencesResponse'
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
-        405:
-          $ref: '#/components/responses/405'
-        409:
-          $ref: '#/components/responses/409'
-        412:
-          $ref: '#/components/responses/412'
-        415:
-          $ref: '#/components/responses/415'
-        422:
-          $ref: '#/components/responses/422'
-        500:
-          $ref: '#/components/responses/500'
-        501:
-          $ref: '#/components/responses/501'
-        502:
-          $ref: '#/components/responses/502'
-        503:
-          $ref: '#/components/responses/503'
-        504:
-          $ref: '#/components/responses/504'
-        505:
-          $ref: '#/components/responses/505'
+        "200":
+          $ref: "#/components/responses/SimpleTasksResourceResponse"
+        "202":
+          $ref: "#/components/responses/SimpleTasksResourceReferencesResponse"
+        "204":
+          $ref: "#/components/responses/NoContent"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "405":
+          $ref: "#/components/responses/405"
+        "409":
+          $ref: "#/components/responses/409"
+        "412":
+          $ref: "#/components/responses/412"
+        "415":
+          $ref: "#/components/responses/415"
+        "422":
+          $ref: "#/components/responses/422"
+        "500":
+          $ref: "#/components/responses/500"
+        "501":
+          $ref: "#/components/responses/501"
+        "502":
+          $ref: "#/components/responses/502"
+        "503":
+          $ref: "#/components/responses/503"
+        "504":
+          $ref: "#/components/responses/504"
+        "505":
+          $ref: "#/components/responses/505"
       x-amazon-apigateway-integration:
         httpMethod: GET
         passthroughBehavior: when_no_match
         requestParameters:
           integration.request.path.TaskId: method.request.path.TaskId
         type: http
-        uri: /api/public/todo/simpleTasks/{TaskId}
+        uri: "/api/public/todo/simpleTasks/{TaskId}"
     patch:
       description: Update a SimpleTasks
       parameters:
@@ -740,53 +742,53 @@ paths:
           - application/vnd.api+json
           - application/json
           type: string
-      - $ref: '#/components/parameters/SimpleTasksPrimaryKey'
+      - $ref: "#/components/parameters/SimpleTasksPrimaryKey"
       requestBody:
         content:
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/SimpleTasksPatchResource'
+              $ref: "#/components/schemas/SimpleTasksPatchResource"
       responses:
-        200:
+        "200":
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Info'
+                $ref: "#/components/schemas/Info"
           description: OK
-        202:
-          $ref: '#/components/responses/SimpleTasksResourceReferencesResponse'
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
-        405:
-          $ref: '#/components/responses/405'
-        409:
-          $ref: '#/components/responses/409'
-        412:
-          $ref: '#/components/responses/412'
-        415:
-          $ref: '#/components/responses/415'
-        422:
-          $ref: '#/components/responses/422'
-        500:
-          $ref: '#/components/responses/500'
-        501:
-          $ref: '#/components/responses/501'
-        502:
-          $ref: '#/components/responses/502'
-        503:
-          $ref: '#/components/responses/503'
-        504:
-          $ref: '#/components/responses/504'
-        505:
-          $ref: '#/components/responses/505'
+        "202":
+          $ref: "#/components/responses/SimpleTasksResourceReferencesResponse"
+        "204":
+          $ref: "#/components/responses/NoContent"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "405":
+          $ref: "#/components/responses/405"
+        "409":
+          $ref: "#/components/responses/409"
+        "412":
+          $ref: "#/components/responses/412"
+        "415":
+          $ref: "#/components/responses/415"
+        "422":
+          $ref: "#/components/responses/422"
+        "500":
+          $ref: "#/components/responses/500"
+        "501":
+          $ref: "#/components/responses/501"
+        "502":
+          $ref: "#/components/responses/502"
+        "503":
+          $ref: "#/components/responses/503"
+        "504":
+          $ref: "#/components/responses/504"
+        "505":
+          $ref: "#/components/responses/505"
 servers:
 - description: Production server (uses live data)
   url: http://prodserver/event/

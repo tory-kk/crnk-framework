@@ -9,7 +9,6 @@ dependencies {
 
 	api  project(':crnk-test')
 	api  project(':crnk-meta')
-	api  group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.9'
 	api  group: 'net.javacrumbs.json-unit', name: 'json-unit-fluent', version: '1.5.3'
 	api  group: 'nl.jqno.equalsverifier', name: 'equalsverifier', version: '1.7.2'
 	api  group: 'com.jayway.jsonpath', name: 'json-path', version: '2.2.0'

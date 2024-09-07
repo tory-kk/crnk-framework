@@ -6,14 +6,14 @@ plugins {
 dependencies {
     api project(':crnk-core')
 
-	api 'org.apache.httpcomponents:httpclient:4.5.2'
-	api 'org.glassfish.jersey.ext:jersey-proxy-client:3.1.3'
-	api 'org.glassfish.jersey.core:jersey-common:3.1.3'
-	api 'org.glassfish.jersey.core:jersey-client:3.1.3'
-	api 'org.glassfish.jersey.core:jersey-server:3.1.3'
-	api 'org.glassfish.jersey.media:jersey-media-json-jackson:3.1.3'
+	api 'org.apache.httpcomponents:httpclient:4.5.13'
+	api 'org.glassfish.jersey.ext:jersey-proxy-client:3.0.14'
+	api 'org.glassfish.jersey.core:jersey-common:3.0.14'
+	api 'org.glassfish.jersey.core:jersey-client:3.0.14'
+	api 'org.glassfish.jersey.core:jersey-server:3.0.14'
+	api 'org.glassfish.jersey.media:jersey-media-json-jackson:3.0.14'
 	api 'com.squareup.okhttp3:okhttp:3.4.1'
-	api 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.15.3'
+	api 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.15.4'
 
     testImplementation  project(':crnk-setup:crnk-setup-rs')
     testImplementation  project(':crnk-test')

@@ -1,9 +1,12 @@
 package io.crnk.core.engine.document;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.node.NullNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
 import io.crnk.core.utils.Nullable;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
@@ -18,7 +21,13 @@ public class DocumentTest {
 
 	@Test
 	public void testDocumentEqualsContract() {
-		EqualsVerifier.forClass(Document.class).usingGetClass().suppress(Warning.NONFINAL_FIELDS).verify();
+		EqualsVerifier.forClass(Document.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				// https://github.com/jqno/equalsverifier/issues/486
+				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
+				.withIgnoredFields("jsonapi") // ignore unused fields in equals and hashcode
+				.verify();
 	}
 
 	@Test

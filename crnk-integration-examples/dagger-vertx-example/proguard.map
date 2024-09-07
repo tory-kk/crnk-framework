@@ -13,29 +13,29 @@ io.crnk.example.vertx.AppModule -> io.crnk.example.vertx.AppModule:
 io.crnk.example.vertx.AppModule_AuthProviderFactory -> io.crnk.example.vertx.AppModule_AuthProviderFactory:
 # {"fileName":"AppModule_AuthProviderFactory.java","id":"sourceFile"}
     io.crnk.example.vertx.AppModule module -> module
-    27:29:void <init>(io.crnk.example.vertx.AppModule) -> <init>
-    37:37:io.crnk.example.vertx.AppModule_AuthProviderFactory create(io.crnk.example.vertx.AppModule) -> create
+    28:30:void <init>(io.crnk.example.vertx.AppModule) -> <init>
+    38:38:io.crnk.example.vertx.AppModule_AuthProviderFactory create(io.crnk.example.vertx.AppModule) -> create
 io.crnk.example.vertx.AppModule_HomeModuleFactory -> io.crnk.example.vertx.AppModule_HomeModuleFactory:
 # {"fileName":"AppModule_HomeModuleFactory.java","id":"sourceFile"}
     io.crnk.example.vertx.AppModule module -> module
-    27:29:void <init>(io.crnk.example.vertx.AppModule) -> <init>
-    37:37:io.crnk.example.vertx.AppModule_HomeModuleFactory create(io.crnk.example.vertx.AppModule) -> create
+    28:30:void <init>(io.crnk.example.vertx.AppModule) -> <init>
+    38:38:io.crnk.example.vertx.AppModule_HomeModuleFactory create(io.crnk.example.vertx.AppModule) -> create
 io.crnk.example.vertx.AppModule_ProjectRepositoryFactory -> io.crnk.example.vertx.AppModule_ProjectRepositoryFactory:
 # {"fileName":"AppModule_ProjectRepositoryFactory.java","id":"sourceFile"}
     io.crnk.example.vertx.AppModule module -> module
-    27:29:void <init>(io.crnk.example.vertx.AppModule) -> <init>
-    37:37:io.crnk.example.vertx.AppModule_ProjectRepositoryFactory create(io.crnk.example.vertx.AppModule) -> create
+    28:30:void <init>(io.crnk.example.vertx.AppModule) -> <init>
+    38:38:io.crnk.example.vertx.AppModule_ProjectRepositoryFactory create(io.crnk.example.vertx.AppModule) -> create
 io.crnk.example.vertx.AppModule_SecurityModuleFactory -> io.crnk.example.vertx.AppModule_SecurityModuleFactory:
 # {"fileName":"AppModule_SecurityModuleFactory.java","id":"sourceFile"}
     io.crnk.example.vertx.AppModule module -> module
-    27:29:void <init>(io.crnk.example.vertx.AppModule) -> <init>
-    37:37:io.crnk.example.vertx.AppModule_SecurityModuleFactory create(io.crnk.example.vertx.AppModule) -> create
+    28:30:void <init>(io.crnk.example.vertx.AppModule) -> <init>
+    38:38:io.crnk.example.vertx.AppModule_SecurityModuleFactory create(io.crnk.example.vertx.AppModule) -> create
 io.crnk.example.vertx.AppModule_SecurityProviderFactory -> io.crnk.example.vertx.AppModule_SecurityProviderFactory:
 # {"fileName":"AppModule_SecurityProviderFactory.java","id":"sourceFile"}
     io.crnk.example.vertx.AppModule module -> module
     javax.inject.Provider authProvider -> authProvider
-    30:33:void <init>(io.crnk.example.vertx.AppModule,javax.inject.Provider) -> <init>
-    42:42:io.crnk.example.vertx.AppModule_SecurityProviderFactory create(io.crnk.example.vertx.AppModule,javax.inject.Provider) -> create
+    31:34:void <init>(io.crnk.example.vertx.AppModule,javax.inject.Provider) -> <init>
+    43:43:io.crnk.example.vertx.AppModule_SecurityProviderFactory create(io.crnk.example.vertx.AppModule,javax.inject.Provider) -> create
 io.crnk.example.vertx.AppServer -> io.crnk.example.vertx.AppServer:
 # {"fileName":"AppServer.java","id":"sourceFile"}
     io.crnk.example.vertx.CrnkVerticle vehicle -> vehicle
@@ -56,25 +56,25 @@ io.crnk.example.vertx.CrnkVerticle -> io.crnk.example.vertx.CrnkVerticle:
     17:17:void <clinit>() -> <clinit>
 io.crnk.example.vertx.DaggerAppComponent -> io.crnk.example.vertx.DaggerAppComponent:
 # {"fileName":"DaggerAppComponent.java","id":"sourceFile"}
-    31:31:io.crnk.example.vertx.DaggerAppComponent$Builder builder() -> builder
+    32:32:io.crnk.example.vertx.DaggerAppComponent$Builder builder() -> builder
 io.crnk.example.vertx.DaggerAppComponent$AppComponentImpl -> io.crnk.example.vertx.DaggerAppComponent$AppComponentImpl:
 # {"fileName":"DaggerAppComponent.java","id":"sourceFile"}
     io.crnk.example.vertx.DaggerAppComponent$AppComponentImpl appComponentImpl -> appComponentImpl
-    javax.inject.Provider projectRepositoryProvider -> projectRepositoryProvider
-    javax.inject.Provider homeModuleProvider -> homeModuleProvider
-    javax.inject.Provider securityModuleProvider -> securityModuleProvider
-    javax.inject.Provider authProvider -> authProvider
-    javax.inject.Provider securityProvider -> securityProvider
-    58:74:void <init>(io.crnk.example.vertx.AppModule) -> <init>
-    77:77:java.util.Set setOfResourceRepository() -> setOfResourceRepository
-    81:81:java.util.Set setOfModule() -> setOfModule
-    85:85:io.crnk.example.vertx.CrnkVerticle crnkVerticle() -> crnkVerticle
-    90:95:void initialize(io.crnk.example.vertx.AppModule) -> initialize
-    99:99:io.crnk.example.vertx.AppServer server() -> server
+    dagger.internal.Provider projectRepositoryProvider -> projectRepositoryProvider
+    dagger.internal.Provider homeModuleProvider -> homeModuleProvider
+    dagger.internal.Provider securityModuleProvider -> securityModuleProvider
+    dagger.internal.Provider authProvider -> authProvider
+    dagger.internal.Provider securityProvider -> securityProvider
+    59:75:void <init>(io.crnk.example.vertx.AppModule) -> <init>
+    78:78:java.util.Set setOfResourceRepository() -> setOfResourceRepository
+    82:82:java.util.Set setOfModule() -> setOfModule
+    86:86:io.crnk.example.vertx.CrnkVerticle crnkVerticle() -> crnkVerticle
+    91:96:void initialize(io.crnk.example.vertx.AppModule) -> initialize
+    100:100:io.crnk.example.vertx.AppServer server() -> server
 io.crnk.example.vertx.DaggerAppComponent$Builder -> io.crnk.example.vertx.DaggerAppComponent$Builder:
 # {"fileName":"DaggerAppComponent.java","id":"sourceFile"}
     io.crnk.example.vertx.AppModule appModule -> appModule
-    41:42:void <init>() -> <init>
-    50:53:io.crnk.example.vertx.AppComponent build() -> build
+    42:43:void <init>() -> <init>
+    51:54:io.crnk.example.vertx.AppComponent build() -> build
 io.crnk.example.vertx.VertxSecurityProvider -> io.crnk.example.vertx.VertxSecurityProvider:
 # {"fileName":"VertxSecurityProvider.java","id":"sourceFile"}

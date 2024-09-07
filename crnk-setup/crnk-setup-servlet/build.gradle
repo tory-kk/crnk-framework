@@ -14,7 +14,7 @@ dependencies {
 	testImplementation  project(':crnk-client')
 	testImplementation  'jakarta.servlet:jakarta.servlet-api:6.0.0'
 
-	testImplementation  'org.springframework.boot:spring-boot-starter-web'
-	testImplementation  'org.springframework.boot:spring-boot-starter-test'
+	testImplementation  'org.springframework.boot:spring-boot-starter-web:3.1.12'
+	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
 	testImplementation  'net.javacrumbs.json-unit:json-unit:1.5.5'
 }

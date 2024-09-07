@@ -1,5 +1,8 @@
 package io.crnk.operations;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.NullNode;
+import com.fasterxml.jackson.databind.node.TextNode;
 import io.crnk.core.engine.document.Resource;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
@@ -11,8 +14,12 @@ public class OperationTest {
 
 	@Test
 	public void testEquals() {
-		EqualsVerifier.forClass(Operation.class).usingGetClass().suppress(Warning.NONFINAL_FIELDS).verify();
-
+		EqualsVerifier.forClass(Operation.class)
+				.usingGetClass()
+				.suppress(Warning.NONFINAL_FIELDS)
+				// https://github.com/jqno/equalsverifier/issues/486
+				.withPrefabValues(JsonNode.class, NullNode.instance, new TextNode("foo"))
+				.verify();
 	}
 
 	@Test

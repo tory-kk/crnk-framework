@@ -1,11 +1,11 @@
 package io.crnk.example.springboot.simple;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Response;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepository;
 import io.crnk.core.resource.list.ResourceList;
 import io.crnk.example.springboot.microservice.Project;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
 
