@@ -35,7 +35,6 @@ dependencies {
 	compileOnlyApi 'org.hibernate:hibernate-core:6.6.0.Final'
 	compileOnlyApi 'org.springframework.boot:spring-boot-starter-web:3.1.12'
 	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
 	compileOnlyApi 'org.springframework.boot:spring-boot-starter-validation:3.1.12'
 	compileOnlyApi 'org.springframework.security:spring-security-core:6.1.9'
 	compileOnlyApi 'org.springframework:spring-orm:6.0.21'
@@ -58,7 +57,6 @@ dependencies {
 	testImplementation  'org.springframework.boot:spring-boot-starter-data-jpa:3.1.12'
 	testImplementation  'org.springframework.boot:spring-boot-starter-web:3.1.12'
 	testImplementation  'org.springframework.boot:spring-boot-starter-test:3.1.12'
-	testImplementation  'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
 	testImplementation  'org.springframework.boot:spring-boot-starter-validation:3.1.12'
 
 	testImplementation	'org.hibernate:hibernate-core:6.6.0.Final'

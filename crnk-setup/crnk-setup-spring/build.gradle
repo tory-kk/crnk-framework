@@ -12,7 +12,6 @@ dependencies {
 
 	compileOnlyApi 'org.springframework.boot:spring-boot-starter-web:3.1.12'
 	compileOnlyApi 'org.springframework.boot:spring-boot-configuration-processor:3.1.12'
-	compileOnlyApi 'org.springframework.boot:spring-boot-starter-actuator:3.1.12'
 	compileOnlyApi 'org.springframework.security:spring-security-core:6.1.9'
 	compileOnlyApi 'org.hibernate:hibernate-core:6.6.0.Final'
 	compileOnlyApi 'org.springframework:spring-orm:6.0.21'
