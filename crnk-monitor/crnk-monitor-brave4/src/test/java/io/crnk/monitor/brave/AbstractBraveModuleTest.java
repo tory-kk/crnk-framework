@@ -19,18 +19,17 @@ import io.crnk.monitor.brave.mock.repository.TaskRepository;
 import io.crnk.monitor.brave.mock.repository.TaskToProjectRepository;
 import io.crnk.rs.CrnkFeature;
 import io.crnk.test.JerseyTestBase;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
-import zipkin2.Endpoint;
 import zipkin2.Span;
 import zipkin2.reporter.Reporter;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -61,12 +60,10 @@ public abstract class AbstractBraveModuleTest extends JerseyTestBase {
     @Before
     @SuppressWarnings("unchecked")
     public void setup() {
-        Endpoint localEndpoint = Endpoint.newBuilder().serviceName("testClient").build();
-
         clientReporter = Mockito.mock(Reporter.class);
         Tracing clientTracing = Tracing.newBuilder()
                 .spanReporter(clientReporter)
-                .localEndpoint(localEndpoint)
+                .localServiceName("testClient")
                 .build();
 
         client = new CrnkClient(getBaseUri().toString());

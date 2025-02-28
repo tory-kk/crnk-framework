@@ -10,7 +10,6 @@ import io.crnk.core.engine.filter.RepositoryRequestFilterChain;
 import io.crnk.core.module.Module;
 import io.crnk.core.module.Module.ModuleContext;
 import io.crnk.core.repository.response.JsonApiResponse;
-import zipkin.Constants;
 
 import java.util.Collection;
 
@@ -53,7 +52,7 @@ public class BraveRepositoryFilter extends RepositoryFilterBase {
 
 		Span span = tracer.nextSpan();
 		span.name(BraveUtil.getSpanName(request));
-		span.tag(Constants.LOCAL_COMPONENT, COMPONENT_NAME);
+		span.tag("lc", COMPONENT_NAME);
 		span.start();
 
 		JsonApiResponse result = null;

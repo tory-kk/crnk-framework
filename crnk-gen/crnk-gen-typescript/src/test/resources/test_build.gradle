@@ -39,10 +39,10 @@ dependencies {
 	implementation files(('../../crnk-meta/build/classes/main'))
 	implementation files(('../../crnk-cdi/build/classes/main'))
 
-	implementation 'org.slf4j:slf4j-api:2.0.9'
-	implementation 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.15.4'
+	implementation 'org.slf4j:slf4j-api:2.0.16'
+	implementation 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.18.2'
 
-	integrationTestCompile 'junit:junit:4.12'
+	integrationTestCompile 'junit:junit:4.13.2'
 	integrationTestCompile 'commons-io:commons-io:2.14.0'
 	integrationTestCompile 'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'
 	integrationTestCompile 'org.apache.deltaspike.core:deltaspike-core-impl:2.0.0'

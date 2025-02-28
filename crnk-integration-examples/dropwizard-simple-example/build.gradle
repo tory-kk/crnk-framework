@@ -10,5 +10,5 @@ dependencies {
 	implementation project(':crnk-setup:crnk-setup-rs')
 	implementation project(':crnk-core')
 
-	implementation 'io.dropwizard:dropwizard-core:4.0.2'
+	implementation 'io.dropwizard:dropwizard-core:4.0.12'
 }

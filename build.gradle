@@ -113,15 +113,15 @@ gradle.beforeProject { Project project ->
 				dependencyManagement {
 					imports {
 						mavenBom 'io.projectreactor:reactor-bom:Bismuth-RELEASE'
-						mavenBom 'org.glassfish.jersey:jersey-bom:3.0.14'
+						mavenBom 'org.glassfish.jersey:jersey-bom:3.1.10'
 					}
 					dependencies {
-						dependency 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.4'
-						dependency 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.15.4'
-						dependency 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.15.4'
-						dependency 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-xml-provider:2.15.4'
-						dependency 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-base:2.15.4'
-						dependency 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.15.4'
+						dependency 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
+						dependency 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.18.2'
+						dependency 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.18.2'
+						dependency 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-xml-provider:2.18.2'
+						dependency 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-base:2.18.2'
+						dependency 'com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.18.2'
 
 						dependency 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
 
@@ -162,19 +162,24 @@ gradle.beforeProject { Project project ->
 //		 	}
 //		 }
 //
- 		apply plugin: 'maven-publish'
+		tasks.register('compileJavaWithParams', JavaCompile) {
+			options.compilerArgs.add("-parameters")
+		}
+
+		apply plugin: 'maven-publish'
 
  		if (!docs && !examples) {
 
- 			task sourcesJar(type: Jar) {
- 				from sourceSets.main.allSource
+			tasks.register('sourcesJar', Jar) {
+				from sourceSets.main.allSource
 				archiveClassifier = 'sources'
- 			}
+			}
 
- 			task javadocJar(type: Jar, dependsOn: 'javadoc') {
- 				from javadoc.destinationDir
+			tasks.register('javadocJar', Jar) {
+				dependsOn 'javadoc'
+				from javadoc.destinationDir
 				archiveClassifier = 'javadoc'
- 			}
+			}
 
 
  			plugins.withId("com.vanniktech.maven.publish.base") {

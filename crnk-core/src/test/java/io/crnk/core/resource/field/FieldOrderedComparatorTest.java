@@ -35,7 +35,9 @@ public class FieldOrderedComparatorTest {
 		fields.add(fieldB);
 
 		// THEN
-		assertThat(fields).containsSequence(fieldB, fieldA);
+		assertThat(fields)
+				.usingDefaultElementComparator()
+				.containsSequence(fieldB, fieldA);
 	}
 
 	@Test
@@ -50,7 +52,9 @@ public class FieldOrderedComparatorTest {
 		fields.add(fieldB);
 
 		// THEN
-		assertThat(fields).containsSequence(fieldB, fieldA);
+		assertThat(fields)
+				.usingDefaultElementComparator()
+				.containsSequence(fieldB, fieldA);
 	}
 
 	@Test
@@ -63,7 +67,9 @@ public class FieldOrderedComparatorTest {
 		fields.add(fieldA);
 
 		// THEN
-		assertThat(fields).containsSequence(fieldB, fieldA);
+		assertThat(fields)
+				.usingDefaultElementComparator()
+				.containsSequence(fieldB, fieldA);
 	}
 
 	@Test
@@ -76,6 +82,8 @@ public class FieldOrderedComparatorTest {
 		fields.add(fieldA);
 
 		// THEN
-		assertThat(fields).containsSequence(fieldA, fieldB);
+		assertThat(fields)
+				.usingDefaultElementComparator()
+				.containsSequence(fieldA, fieldB);
 	}
 }

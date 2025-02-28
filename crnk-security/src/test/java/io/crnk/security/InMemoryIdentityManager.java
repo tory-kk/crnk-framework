@@ -1,12 +1,9 @@
 package io.crnk.security;
 
-import org.eclipse.jetty.security.ConstraintMapping;
-import org.eclipse.jetty.security.ConstraintSecurityHandler;
-import org.eclipse.jetty.security.HashLoginService;
-import org.eclipse.jetty.security.SecurityHandler;
-import org.eclipse.jetty.security.UserStore;
+import org.eclipse.jetty.ee10.servlet.security.ConstraintMapping;
+import org.eclipse.jetty.ee10.servlet.security.ConstraintSecurityHandler;
+import org.eclipse.jetty.security.*;
 import org.eclipse.jetty.security.authentication.BasicAuthenticator;
-import org.eclipse.jetty.util.security.Constraint;
 import org.eclipse.jetty.util.security.Credential;
 
 /**
@@ -17,31 +14,30 @@ import org.eclipse.jetty.util.security.Credential;
  */
 public class InMemoryIdentityManager {
 
-	private ConstraintSecurityHandler securityHandler;
+	private final ConstraintSecurityHandler securityHandler;
 
-	private HashLoginService loginService;
+	private final HashLoginService loginService;
 
-	private UserStore userStore;
+	private final UserStore userStore;
 
-	private String realm = "myrealm";
+	private final static String REALM = "myrealm";
 
 	public InMemoryIdentityManager() {
 		userStore = new UserStore();
 
 		loginService = new HashLoginService();
-		loginService.setName(realm);
+		loginService.setName(REALM);
 		loginService.setUserStore(userStore);
 
 		securityHandler = new ConstraintSecurityHandler();
 		securityHandler.setAuthenticator(new BasicAuthenticator());
-		securityHandler.setRealmName(realm);
+		securityHandler.setRealmName(REALM);
 		securityHandler.setLoginService(loginService);
 
-		Constraint constraint = new Constraint();
-		constraint.setName(Constraint.__BASIC_AUTH);
-		//		constraint.setRoles(new String[] { "getRole", "postRole", "allRole" });
-		constraint.setRoles(new String[]{Constraint.ANY_AUTH, "getRole", "postRole", "allRole"});
-		constraint.setAuthenticate(true);
+		Constraint constraint = new Constraint.Builder()
+				.name(Authenticator.BASIC_AUTH)
+				.authorization(Constraint.Authorization.ANY_USER)
+				.build();
 
 		ConstraintMapping cm = new ConstraintMapping();
 		cm.setConstraint(constraint);

@@ -13,7 +13,7 @@ import org.springframework.security.access.AccessDeniedException;
  */
 public class AccessDeniedExceptionMapper implements ExceptionMapper<AccessDeniedException> {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AccessDeniedException.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AccessDeniedExceptionMapper.class);
 
 	private static final String META_TYPE_VALUE = "AccessDeniedException";
 

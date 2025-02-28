@@ -9,7 +9,7 @@ dependencies {
 	api 'io.vertx:vertx-rx-java3:4.4.5'
 	api 'io.projectreactor.addons:reactor-adapter:3.5.1'
 
-	compileOnly 'org.slf4j:slf4j-api:2.0.9'
+	compileOnly 'org.slf4j:slf4j-api:2.0.16'
 
 	testImplementation  project(':crnk-reactive')
 	testImplementation  project(':crnk-test')
