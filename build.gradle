@@ -113,7 +113,7 @@ gradle.beforeProject { Project project ->
 				dependencyManagement {
 					imports {
 						mavenBom 'io.projectreactor:reactor-bom:Bismuth-RELEASE'
-						mavenBom 'org.glassfish.jersey:jersey-bom:3.1.10'
+						mavenBom 'org.glassfish.jersey:jersey-bom:3.1.9'
 					}
 					dependencies {
 						dependency 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'

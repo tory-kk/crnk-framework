@@ -284,7 +284,7 @@ public class BasicSpringBoot3Test {
 		ResponseEntity<String> response = testRestTemplate
 				.getForEntity("http://localhost:" + this.port + "/api/custom", String.class);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals(response.getBody(), "hello");
+		assertEquals("hello", response.getBody());
 	}
 
 	@Test
@@ -307,7 +307,7 @@ public class BasicSpringBoot3Test {
 			ErrorData errorData = document.getErrors().get(0);
 			Assert.assertEquals("404", errorData.getStatus());
 			Assert.assertEquals("Not Found", errorData.getTitle());
-			Assert.assertEquals("No message available", errorData.getDetail());
+			Assert.assertEquals("No static resource doesNotExist.", errorData.getDetail());
 		}
 	}
 }

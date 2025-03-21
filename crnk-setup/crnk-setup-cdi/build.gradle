@@ -8,10 +8,10 @@ dependencies {
 	implementation project(':crnk-core')
 	implementation group: 'jakarta.platform', name: 'jakarta.jakartaee-api', version: '10.0.0'
 
-	testImplementation  "org.junit.jupiter:junit-jupiter-api:5.10.0"
-	testImplementation  "org.junit.jupiter:junit-jupiter-params:5.10.0"
-	testImplementation  "org.junit.jupiter:junit-jupiter-engine:5.10.0"
-	testImplementation  "org.junit.vintage:junit-vintage-engine:5.10.0"
+	testImplementation  "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
+	testImplementation  "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
+	testImplementation  "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
+	testImplementation  "org.junit.vintage:junit-vintage-engine:$JUNIT_VERSION"
 
 	testImplementation  'org.apache.deltaspike.core:deltaspike-core-impl:2.0.0'
 	testImplementation  'org.apache.deltaspike.modules:deltaspike-test-control-module-api:2.0.0'

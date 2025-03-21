@@ -18,12 +18,12 @@ dependencies {
 
 	implementation 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.18.2'
 	implementation 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-base:2.18.2'
-	implementation 'org.glassfish.jersey.containers:jersey-container-servlet:3.1.10'
-	implementation 'org.glassfish.jersey.core:jersey-server:3.1.10'
-	implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:3.1.10'
-	implementation 'org.glassfish.jersey.inject:jersey-hk2:3.1.10'
+	implementation 'org.glassfish.jersey.containers:jersey-container-servlet:3.1.9'
+	implementation 'org.glassfish.jersey.core:jersey-server:3.1.9'
+	implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:3.1.9'
+	implementation 'org.glassfish.jersey.inject:jersey-hk2:3.1.9'
 
-	implementation('org.glassfish.jersey.media:jersey-media-json-jackson:3.1.10') {
+	implementation('org.glassfish.jersey.media:jersey-media-json-jackson:3.1.9') {
 		exclude(module: 'jackson-jaxrs-base')
 		exclude(module: 'jackson-jaxrs-json-provider')
 		exclude(module: 'jackson-annotations')
@@ -35,5 +35,16 @@ dependencies {
 	testImplementation  "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
 	testImplementation  "org.junit.vintage:junit-vintage-engine:$JUNIT_VERSION"
 	testImplementation  'org.hamcrest:hamcrest-library:2.2'
-	testImplementation  'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:3.1.10'
+	testImplementation  'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:3.1.9'
+}
+
+dependencyManagement {
+	dependencies {
+		// Spring Boot 3.2.12 dependency management uses JUnit 5.10.5, but Jersey 3.1.9 brings JUnit 5.11.0
+		dependency  "org.junit.jupiter:junit-jupiter:$JUNIT_VERSION"
+		dependency  "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
+		dependency  "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
+		dependency  "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
+		dependency  "org.junit.vintage:junit-vintage-engine:$JUNIT_VERSION"
+	}
 }
